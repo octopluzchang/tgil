@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BlecGuXuE63vXb1bwclWg9Eky9PZTX/8uxWhgSe3U4suKoTHwnxJP7tmkAdYcoO4MWRrebMQFLrVyEoHmXfvsA==",
+  "success": true,
+  "projectFilePath": "D:\\WorkSpace\\PAMO\\SourceCode\\law-firm-sales-campaign\\PAMO_TapPay\\PAMO_TapPay.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tp2006037\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
