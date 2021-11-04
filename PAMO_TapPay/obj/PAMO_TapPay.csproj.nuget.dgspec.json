@@ -46,9 +46,17 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "NLog": {
+              "target": "Package",
+              "version": "[4.7.12, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[5.68.0, )"
             }
           },
           "imports": [
