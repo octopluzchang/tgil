@@ -26,10 +26,10 @@ namespace PAMO_TapPay.Pages
         public string Env { get; set; }
         public string AppID { get; set; }
         public string AppKey { get; set; }
-       
+
         public void OnGet()
         {
-            
+
             Env = _config.GetValue<string>("TapPayInfo:Env");
             AppID = _config.GetValue<string>("TapPayInfo:AppID");
             AppKey = _config.GetValue<string>("TapPayInfo:AppKey");
@@ -38,10 +38,10 @@ namespace PAMO_TapPay.Pages
         public IActionResult OnGetSnedData(TapPayReceiveModel receiveModel)
         {
             string result = string.Empty;
+            bool isPayAlready = false;
             _logger.Trace("_Info:" + JsonConvert.SerializeObject(receiveModel));
             try
             {
-
                 var TapPayHost = _config.GetValue<string>("TapPayInfo:TapPayHost");
                 var TapPayUrl = _config.GetValue<string>("TapPayInfo:TapPayUrl");
                 var PartnerKey = _config.GetValue<string>("TapPayInfo:PartnerKey");
@@ -64,7 +64,7 @@ namespace PAMO_TapPay.Pages
                     cardholder = new Cardholder
                     {
                         phone_number = receiveModel.PhoneNumber,
-                        name = IsASCIIForeigner(receiveModel.LastName) ? $"{ receiveModel.FirstName } { receiveModel.LastName }" : $"{ receiveModel.LastName }{receiveModel.FirstName }",
+                        name = IsASCIIForeigner(receiveModel.LastName) ? $"{ receiveModel.FirstName } { receiveModel.LastName }" : $"{ receiveModel.LastName }{ receiveModel.FirstName }",
                         email = receiveModel.Email,
                         zip_code = "",
                         address = "",
@@ -77,7 +77,11 @@ namespace PAMO_TapPay.Pages
                 string tapPayResult = new Biz_Client().Client(TapPayHost, TapPayUrl, sendJson, headers);
                 dynamic tapPayObject = JsonConvert.DeserializeObject<dynamic>(tapPayResult);
                 if (tapPayObject["status"] != "0")
-                    return Content(tapPayResult);
+                {
+                    _logger.Trace("_TapPay_Error:" + JsonConvert.SerializeObject(tapPayObject));
+                    return Content("{\"status\":\"-2\",\"msg\":\"付款失敗，請檢查卡號相關資料是否正確。\"}");
+                }
+                isPayAlready = true;
                 #endregion
 
                 #region PamoUrl
@@ -103,19 +107,35 @@ namespace PAMO_TapPay.Pages
                 TwilioClient.Init(AccountSid, AuthToken);
 
                 var message = MessageResource.Create(
-                    body: "PAMO sell Asshole X Link:" + PamoUrl,
+                    body: $"Hi, {receiveModel.FirstName}\n歡迎使用PAMO會員系統！\nLink: {PamoUrl}",
                     from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
-                    to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber}")
+                    to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );
-                _logger.Trace("_Done:" + message);
+
+                if (message.ErrorCode == null)
+                {
+                    result = "{\"status\":\"0\",\"msg\":\"付款成功！簡訊已寄出，請留意您手機訊息。\"}";
+                }
+                else
+                {
+                    _logger.Trace("_SMS_Error:" + JsonConvert.SerializeObject(message));
+                    result = "{\"status\":\"-3\",\"msg\":\"簡訊寄送失敗，請聯絡客服人員。\"}";
+                }
                 #endregion
 
-                result = tapPayResult;
+                _logger.Trace("_Done:" + JsonConvert.SerializeObject(message));
             }
             catch (Exception ex)
             {
                 _logger.Trace("_Catch:" + ex.ToString());
-                return Content("{\"status\": -1,\"msg\":\"系統發生異常，請聯絡客服人員。\"}");
+                if (isPayAlready)
+                {   //status = -1 系統異常、-2 TapPay付款異常、-3 已付款成功，但簡訊寄送異常
+                    return Content("{\"status\":\"-3\",\"msg\":\"簡訊系統異常，請聯絡客服人員。\"}");
+                }
+                else
+                {
+                    return Content("{\"status\":\"-1\",\"msg\":\"系統發生異常，請聯絡客服人員。\"}");
+                }
             }
 
             return Content(result);
@@ -123,7 +143,7 @@ namespace PAMO_TapPay.Pages
 
         public static bool IsASCIIForeigner(string s)
         {
-            if (s.Any(c => c < 'a' || c > 'z')) 
+            if (s.Any(c => c < 'a' || c > 'z'))
                 return true; //that is foreigner when owner anyone english word
 
             return false;

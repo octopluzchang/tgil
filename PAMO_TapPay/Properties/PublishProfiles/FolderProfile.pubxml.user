@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
-    <History>True|2021-11-03T03:29:59.9130525Z;</History>
+    <History>True|2021-11-08T19:50:24.2508840Z;True|2021-11-03T11:29:59.9130525+08:00;</History>
   </PropertyGroup>
 </Project>
