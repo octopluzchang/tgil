@@ -57,18 +57,18 @@
 <body>
     <div class="jumbotron">
         <h2>歡迎使用<br>PAMO線上付款系統</h2>
-        <p class="lead">PAMO使用TapPay第三方服務，提供安全的線上付款方式</p>
+        <p class="lead">PAMO使用TapPay第三方服務，提供最安全的線上付款方式</p>
     </div>
     <div class="container">
         <form>
             <div class="form-group row">
                 <div class="col">
-                    <label for="FirstName">姓</label>
-                    <input class="form-control" id="FirstName" placeholder="姓">
+                    <label for="LastName">姓</label>
+                    <input class="form-control" id="LastName" placeholder="姓">
                 </div>
                 <div class="col">
-                    <label for="LastName">名</label>
-                    <input class="form-control" id="LastName" placeholder="名">
+                    <label for="FirstName">名</label>
+                    <input class="form-control" id="FirstName" placeholder="名">
                 </div>
             </div>
             <div class="form-group">
@@ -96,12 +96,11 @@
         </form>
         <br>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        TPDirect.setupSDK(122018, 'app_X9KbcygzQy1exnnqBdeblLhcw4qzeQJwobg4Oa4a6lRLGlBYED90vqzuSQiq', 'sandbox')
+        TPDirect.setupSDK(@Model.AppID, '@Model.AppKey', '@Model.Env')
         TPDirect.card.setup({
             fields: {
                 number: {

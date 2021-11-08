@@ -80,3 +80,6 @@ D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netco
 D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netcoreapp3.1\NLog.dll
 D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netcoreapp3.1\Twilio.dll
+D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netcoreapp3.1\NLog.config
+D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
