@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PAMO_TapPay.Biz;
@@ -11,6 +10,11 @@ using System.Linq;
 using NLog;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
+using System.Text;
+using System.Web;
+using System.Net;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace PAMO_TapPay.Pages
 {
@@ -35,22 +39,31 @@ namespace PAMO_TapPay.Pages
             AppKey = _config.GetValue<string>("TapPayInfo:AppKey");
         }
 
-        public IActionResult OnGetSnedData(TapPayReceiveModel receiveModel)
+        public async Task<IActionResult> OnGetSnedDataAsync(TapPayReceiveModel receiveModel)
         {
-            string result = string.Empty;
-            bool isPayAlready = false;
             _logger.Trace("_Info:" + JsonConvert.SerializeObject(receiveModel));
+
+            bool isPayAlready = false;
+            string result;
+
             try
             {
+                #region Get Config
                 var TapPayHost = _config.GetValue<string>("TapPayInfo:TapPayHost");
                 var TapPayUrl = _config.GetValue<string>("TapPayInfo:TapPayUrl");
                 var PartnerKey = _config.GetValue<string>("TapPayInfo:PartnerKey");
                 var Merchant_id = _config.GetValue<string>("TapPayInfo:Merchant_id");
+                var PamoIss = _config.GetValue<string>("PamoInfo:PamoIss");
+                var PamoSub = _config.GetValue<string>("PamoInfo:PamoSub");
                 var PamoUrl = _config.GetValue<string>("PamoInfo:PamoUrl");
                 var PamoAmount = _config.GetValue<string>("PamoInfo:PamoAmount");
+                var PamoSecret = _config.GetValue<string>("PamoInfo:PamoSecret");
+                var BitlyUrl = _config.GetValue<string>("Bitly:BitlyUrl");
+                var BitlyApiKey = _config.GetValue<string>("Bitly:ApiKey");
                 var AccountSid = _config.GetValue<string>("TwilioInfo:Account_Sid");
                 var AuthToken = _config.GetValue<string>("TwilioInfo:Auth_Token");
                 var PhoneNoFrom = _config.GetValue<string>("TwilioInfo:PhoneNoFrom");
+                #endregion
 
                 #region TapPayAPI
                 TapPaySnedModel tapPaySendModel = new TapPaySnedModel
@@ -65,7 +78,7 @@ namespace PAMO_TapPay.Pages
                     {
                         phone_number = receiveModel.PhoneNumber,
                         name = IsASCIIForeigner(receiveModel.LastName) ? $"{ receiveModel.FirstName } { receiveModel.LastName }" : $"{ receiveModel.LastName }{ receiveModel.FirstName }",
-                        email = receiveModel.Email,
+                        email = receiveModel.Email ?? "",
                         zip_code = "",
                         address = "",
                         national_id = ""
@@ -84,30 +97,43 @@ namespace PAMO_TapPay.Pages
                 isPayAlready = true;
                 #endregion
 
-                #region PamoUrl
-                PamoSendModel pamoSendModel = new PamoSendModel
+                #region PamoAuth
+                //  Use Chilkat.Jwt
+                Chilkat.Jwt jwt = new Chilkat.Jwt();
+                //  Build the JOSE header
+                Chilkat.JsonObject jose = new Chilkat.JsonObject();
+                //  Use HS256.  Pass the string "HS384" or "HS512" to use a different algorithm.
+                bool success = jose.AppendString("alg", "HS256");
+                success = jose.AppendString("typ", "JWT");
+                //  Now build the JWT claims (also known as the payload)
+                Chilkat.JsonObject claims = new Chilkat.JsonObject();
+                success = claims.AppendString("iss", PamoIss);
+                success = claims.AppendString("sub", PamoSub);
+                var user_data = new UserData
                 {
-                    iss = "iss",
-                    sub = "sub",
-                    user_data = new UserData
-                    {
-                        last_name = "",
-                        first_name = "",
-                        plate_number = "",
-                        national_id = "",
-                        phone_number = "",
-                        birth = "",
-                        email = ""
-                    }
-
+                    last_name = receiveModel.LastName,
+                    first_name = receiveModel.FirstName,
+                    plate_number = "",
+                    national_id = "",
+                    phone_number = receiveModel.PhoneNumber,
+                    birth = "",
+                    email = receiveModel.Email ?? ""
                 };
+                string userDataJson = JsonConvert.SerializeObject(user_data);
+                success = claims.AppendString("user_data", userDataJson);
+                jwt.AutoCompact = true;
+                string strJwt = jwt.CreateJwt(jose.Emit(), claims.Emit(), PamoSecret);
+                #endregion
+
+                #region Make Short Url
+                var tempPamoUrl = await BitlyIt(BitlyUrl, BitlyApiKey, $"{ PamoUrl }?auth={ strJwt }");
                 #endregion
 
                 #region TwilioSMSAPI
                 TwilioClient.Init(AccountSid, AuthToken);
 
                 var message = MessageResource.Create(
-                    body: $"Hi, {receiveModel.FirstName}\n歡迎使用PAMO會員系統！\nLink: {PamoUrl}",
+                    body: $"Hi, {receiveModel.FirstName}\n歡迎使用PAMO會員系統！\nLink: {tempPamoUrl}",
                     from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
                     to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );
@@ -139,6 +165,25 @@ namespace PAMO_TapPay.Pages
             }
 
             return Content(result);
+        }
+
+        public async Task<string> BitlyIt(string bitlyUrl, string apiKey, string strLongUrl)
+        {
+
+            var url = $"{bitlyUrl}?access_token={apiKey}&longUrl={HttpUtility.UrlEncode(strLongUrl)}";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            var response = await request.GetResponseAsync();
+            using (var responseStream = response.GetResponseStream())
+            {
+                var reader = new StreamReader(responseStream, Encoding.UTF8);
+                var jsonResponse = JObject.Parse(await reader.ReadToEndAsync());
+                var statusCode = jsonResponse["status_code"].Value<int>();
+                if (statusCode == (int)HttpStatusCode.OK)
+                    return jsonResponse["data"]["url"].Value<string>();
+
+            }
+
+            return strLongUrl;
         }
 
         public static bool IsASCIIForeigner(string s)

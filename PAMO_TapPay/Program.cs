@@ -17,6 +17,9 @@ namespace PAMO_TapPay
         {
             CreateHostBuilder(args).Build().Run();
 
+            Chilkat.Rest rest = new Chilkat.Rest();
+            Console.WriteLine(rest.Version);
+
             var logger = NLog.Web.NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {

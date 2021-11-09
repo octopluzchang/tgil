@@ -1,5 +1,0 @@
-D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\obj\Debug\netcoreapp2.2\PAMO_TapPay.csproj.AssemblyReference.cache
-D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\obj\Debug\netcoreapp2.2\PAMO_TapPay.GeneratedMSBuildEditorConfig.editorconfig
-D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\obj\Debug\netcoreapp2.2\PAMO_TapPay.AssemblyInfoInputs.cache
-D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\obj\Debug\netcoreapp2.2\PAMO_TapPay.AssemblyInfo.cs
-D:\WorkSpace\PAMO\SourceCode\law-firm-sales-campaign\PAMO_TapPay\obj\Debug\netcoreapp2.2\PAMO_TapPay.csproj.CoreCompileInputs.cache

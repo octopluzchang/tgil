@@ -79,8 +79,8 @@
                 <input type="tel" class="form-control" id="PhoneNumber" placeholder="手機號碼" required="required">
             </div>
             <div class="form-group">
-                <label for="Email">電子信箱</label>
-                <input type="email" class="form-control" id="Email" placeholder="電子信箱" required="required">
+                <label for="Email">電子信箱(非必填)</label>
+                <input type="email" class="form-control" id="Email" placeholder="電子信箱">
             </div>
             <div class="form-group card-number-group">
                 <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
@@ -221,7 +221,7 @@
             // Get prime
             TPDirect.card.getPrime(function (result) {
                 if (result.status !== 0) {
-                    swal("卡號授權狀態異常", 'get prime error ' + result.msg, "error", { button: "Cancel" });
+                    swal("卡號授權狀態異常", "get prime error" + result.msg, "error", { button: "Cancel" });
                     return
                 }
                 //TODO 測試用，上線前改為POST
