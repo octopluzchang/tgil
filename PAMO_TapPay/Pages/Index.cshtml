@@ -8,6 +8,7 @@
 <html lang="en">
 
 <head>
+    @Html.AntiForgeryToken()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -224,14 +225,27 @@
                     swal("卡號授權狀態異常", "get prime error" + result.msg, "error", { button: "Cancel" });
                     return
                 }
-                //TODO 測試用，上線前改為POST
-                var url = "Index?handler=SnedData";
-                url += "&Prime=" + result.card.prime;
-                url += "&FirstName=" + firstName
-                url += "&LastName=" + lastName
-                url += "&PhoneNumber=" + phoneNumber
-                url += "&Email=" + email
-                $.get(url).done(function (res) {
+
+                var postData = {
+                    "Prime": result.card.prime,
+                    "FirstName": firstName,
+                    "LastName": lastName,
+                    "PhoneNumber": phoneNumber,
+                    "Email": email
+                };
+
+                $.ajax({
+                    method: "post",
+                    url: "Index?handler=SnedData",
+                    data: postData,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    error: function (xhr, status, err) {
+                        swal("網路發生異常，請聯絡客服人員。", err + " status:" + status, "error", { button: "Cancel" });
+                    }
+                }).done(function (res) {
                     var obj = jQuery.parseJSON(res);
                     if (obj.status === "0") {
                         swal(obj.msg, "", "success", { button: "Cancel" });
@@ -243,6 +257,7 @@
                         $('button[type="submit"]').attr('disabled', true)
                     }
                 });
+
             })
         })
 
