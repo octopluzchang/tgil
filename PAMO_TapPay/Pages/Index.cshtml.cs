@@ -72,7 +72,7 @@ namespace PAMO_TapPay.Pages
                     prime = receiveModel.Prime,
                     merchant_id = Merchant_id,
                     partner_key = PartnerKey,
-                    details = "",
+                    details = "PAMO安心方案",
                     amount = int.Parse(PamoPrice),
                     remember = false,
                     cardholder = new Cardholder
@@ -84,7 +84,7 @@ namespace PAMO_TapPay.Pages
                         address = "",
                         national_id = ""
                     }
-                };
+                };  
 
                 string sendJson = JsonConvert.SerializeObject(tapPaySendModel);
                 var headers = new Dictionary<string, string> { { "x-api-key", PartnerKey } };
@@ -174,7 +174,7 @@ namespace PAMO_TapPay.Pages
 
         public static bool IsASCIIForeigner(string s)
         {
-            if (s.Any(c => c < 'a' || c > 'z'))
+            if (!s.Any(c => c < 'a' || c > 'z'))
                 return true; //that is foreigner when name have any one word of eng
 
             return false;
