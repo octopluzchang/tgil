@@ -25,6 +25,7 @@ namespace PAMO_TapPay
             //.AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             //宣告 AJAX POST 使用的 Header 名稱
             services.AddAntiforgery(o => o.HeaderName = "X-CSRF-TOKEN");
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +43,9 @@ namespace PAMO_TapPay
             }
 
             app.UseHttpsRedirection();
+
+            app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -52,6 +56,8 @@ namespace PAMO_TapPay
             {
                 endpoints.MapRazorPages();
             });
+
+
         }
     }
 }

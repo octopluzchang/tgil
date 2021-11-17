@@ -9,6 +9,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="MyImage.jpg" />
+    <None Remove="Pages\MyImage.jpg" />
+    <None Remove="Pages\sample.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\.DS_Store" />
+    <None Include="wwwroot\assets\bg-plan-head-feature-1.png" />
+    <None Include="wwwroot\assets\bg-plan-head-feature-2.png" />
+    <None Include="wwwroot\assets\bg-plan-head-feature-3.png" />
+    <None Include="wwwroot\assets\bg-plan-head-logo.png" />
+    <None Include="wwwroot\assets\bg-product-dot-plan.png" />
+    <None Include="wwwroot\assets\bg_front-page.png" />
+    <None Include="wwwroot\assets\fonts.css" />
+    <None Include="wwwroot\assets\fonts\.DS_Store" />
+    <None Include="wwwroot\assets\fonts\NotoSansTC-Bold.otf" />
+    <None Include="wwwroot\assets\fonts\NotoSansTC-Light.otf" />
+    <None Include="wwwroot\assets\fonts\NotoSansTC-Medium.otf" />
+    <None Include="wwwroot\assets\fonts\NotoSerifTC-SemiBold.otf" />
+    <None Include="wwwroot\assets\fonts\slick.eot" />
+    <None Include="wwwroot\assets\fonts\slick.svg" />
+    <None Include="wwwroot\assets\fonts\slick.ttf" />
+    <None Include="wwwroot\assets\fonts\slick.woff" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\sample.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ChilkatDnCore" Version="9.5.0.88" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NLog" Version="4.7.12" />
@@ -18,6 +48,9 @@
 
   <ItemGroup>
     	 <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
+    	 <Content Update="Pages\Index.cshtml">
+    	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    	 </Content>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
