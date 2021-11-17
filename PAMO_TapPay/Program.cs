@@ -11,8 +11,8 @@ namespace PAMO_TapPay
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("PAMO Web Program Will Start...");
             CreateHostBuilder(args).Build().Run();
-
             Chilkat.Rest rest = new Chilkat.Rest();
             Console.WriteLine(rest.Version);
 
