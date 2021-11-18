@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PAMO</title>
+    <title>PAMO - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" HREF="favicon.ico">
+    @*<link rel="icon" type="image/x-icon" href="./favicon.ico">*@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navba-expand-sm navbar-toggleable-sm navbar-light bg-wrhite border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">PAMO</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">安心方案</a>
                 @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,8 +28,8 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - PAMO
+        <div class="container" style="text-align: center;">
+            All Rights Reserved to &copy;PAMO Law Firm 2017-@DateTime.Now.Year
         </div>
     </footer>
 
