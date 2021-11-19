@@ -194,9 +194,13 @@
                         </div>
                         <div class="form-group mb-4">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-lg mb-4 mb-lg-0">
                                     <label for="PhoneNumber">手機號碼</label>
                                     <input type="tel" class="form-control" id="PhoneNumber" required="required">
+                                </div>
+                                <div class="col-md">
+                                    <label for="PhoneNumber">再輸入一次手機號碼</label>
+                                    <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
                                 </div>
                             </div>
                         </div>
@@ -204,15 +208,15 @@
                             <div class="row">
                                 <div class="col-lg-6 mb-4 mb-lg-0 card-number-group">
                                     <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
-                                    <input class="form-control card-number">
+                                    <div class="form-control card-number"></div>
                                 </div>
                                 <div class="col expiration-date-group">
                                     <label for="expiration-date" class="control-label">到期日</label>
-                                    <input class="form-control expiration-date" id="tappay-expiration-date">
+                                    <div class="form-control expiration-date" id="tappay-expiration-date"></div>
                                 </div>
                                 <div class="col cvc-group">
                                     <label for="cvc" class="control-label">安全碼</label>
-                                    <input class="form-control cvc">
+                                    <div class="form-control ccv"></div>
                                 </div>
                             </div>
                         </div>
