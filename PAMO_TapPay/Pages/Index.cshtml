@@ -216,7 +216,7 @@
                                 </div>
                                 <div class="col cvc-group">
                                     <label for="cvc" class="control-label">安全碼</label>
-                                    <div class="form-control ccv"></div>
+                                    <div class="form-control cvc"></div>
                                 </div>
                             </div>
                         </div>
@@ -339,6 +339,7 @@
 
         $('form').on('submit', function (event) {
             var phoneNumber = $('#PhoneNumber').val()
+            var confirmPhoneNumber = $('#ConfirmPhoneNumber').val()
             var email = $('#Email').val()
             var firstName = $('#FirstName').val()
             var lastName = $('#LastName').val()
@@ -354,6 +355,10 @@
             // Check Basic Info
             if (isMobile(phoneNumber) === false) {
                 swal("請輸入正確的手機號碼!", "error phone format", "error", { button: "Cancel" });
+                return
+            }
+            if (confirmPhoneNumber !== phoneNumber) {
+                swal("兩次輸入手機號碼不相同，請重新確認。", "phone number is different", "error", { button: "Cancel" });
                 return
             }
 

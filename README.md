@@ -1,11 +1,16 @@
 # law-firm-sales-campaign
 專案在PAMO_TapPay File底下
 
+#.NET Core 5.0 SDK 
+需要安裝.NET Core 5.0 SDK
+如果您已安裝 .NET Core，請使用 dotnet --info 命令來判斷您使用的 SDK。
+dotnet publish -c Release 發佈後就可以進行DockerFile操作
+
 #appsettings.json
 appsettings.json為專案設定檔
-已填寫完畢只需把沙盒參數註解掉換成正是參數(三個)
+已填寫完畢只需把"沙盒參數"註解掉換成正式參數即可(共三個註解)
 >>TapPayInfo
-再麻煩自行修改
+下列三項再麻煩自行修改
 >>TwilioInfo
 >>PamoInfo
 >>Bitly
