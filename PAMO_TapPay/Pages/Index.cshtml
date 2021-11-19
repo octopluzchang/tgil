@@ -338,6 +338,7 @@
         })
 
         $('form').on('submit', function (event) {
+
             var phoneNumber = $('#PhoneNumber').val()
             var confirmPhoneNumber = $('#ConfirmPhoneNumber').val()
             var email = $('#Email').val()
@@ -375,6 +376,16 @@
                     return
                 }
 
+                // Loading Lock
+                swal({
+                    title: "服務開通中，請稍待片刻",
+                    text: "Please wait while we activate your service.",
+                    icon: "./assets/loading.gif",
+                    buttons: false,
+                    closeOnClickOutside: false,
+                    timer: 10000,
+                });
+
                 var postData = {
                     "Prime": result.card.prime,
                     "FirstName": firstName,
@@ -392,9 +403,11 @@
                             $('input:hidden[name="__RequestVerificationToken"]').val());
                     },
                     error: function (xhr, status, err) {
+                        shutDownSwal;
                         swal("網路發生異常，請聯絡客服人員。", err + " status:" + status, "error", { button: "Cancel" });
                     }
                 }).done(function (res) {
+                    shutDownSwal;
                     var obj = jQuery.parseJSON(res);
                     if (obj.status === "0") {
                         swal(obj.msg, "", "success", { button: "Cancel" });
@@ -445,6 +458,10 @@
         {
             var reg = /^09[0-9]{8}$/;
             return reg.test(s)
+        }
+
+        function shutDownSwal() {
+            $(".swal-overlay").removeClass("swal-overlay--show-modal");
         }
 
     </script>

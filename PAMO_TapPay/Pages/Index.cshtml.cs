@@ -67,6 +67,7 @@ namespace PAMO_TapPay.Pages
                 #endregion
 
                 #region TapPayAPI
+                var fullName = IsChinese(receiveModel.LastName) ? $"{ receiveModel.LastName }{ receiveModel.FirstName }" : $"{ receiveModel.FirstName } { receiveModel.LastName }";
                 TapPaySnedModel tapPaySendModel = new TapPaySnedModel
                 {
                     prime = receiveModel.Prime,
@@ -78,7 +79,7 @@ namespace PAMO_TapPay.Pages
                     cardholder = new Cardholder
                     {
                         phone_number = receiveModel.PhoneNumber,
-                        name = IsASCIIForeigner(receiveModel.LastName) ? $"{ receiveModel.FirstName } { receiveModel.LastName }" : $"{ receiveModel.LastName }{ receiveModel.FirstName }",
+                        name = fullName,
                         email = receiveModel.Email ?? "",
                         zip_code = "",
                         address = "",
@@ -138,7 +139,7 @@ namespace PAMO_TapPay.Pages
                 TwilioClient.Init(AccountSid, AuthToken);
 
                 var message = MessageResource.Create(
-                    body: $"Hi, {receiveModel.FirstName}\n歡迎使用PAMO會員系統！\nLink: {tempPamoUrl}",
+                    body: $"【{fullName}】您好，點擊網址完成註冊後即可使用PAMO安心方案的法律科技服務。{tempPamoUrl}",
                     from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
                     to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );
@@ -172,12 +173,25 @@ namespace PAMO_TapPay.Pages
             return Content(result);
         }
 
-        public static bool IsASCIIForeigner(string s)
+        public static bool IsChinese(string s)
         {
-            if (!s.Any(c => c < 'a' || c > 'z'))
-                return true; //that is foreigner when name have any one word of eng
-
-            return false;
+            Boolean flag = true;
+            int dstringmax = Convert.ToInt32("9fff", 16);
+            int dstringmin = Convert.ToInt32("4e00", 16);
+            for (int i = 0; i < s.Length; i++)
+            {
+                int dRange = Convert.ToInt32(Convert.ToChar(s.Substring(i, 1)));
+                if (dRange >= dstringmin && dRange < dstringmax)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
     }
