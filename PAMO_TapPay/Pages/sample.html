@@ -9,6 +9,7 @@
         #header {
             background-color: rgb(36, 36, 36);
         }
+
         .tappay-field-focus {
             border-color: #66afe9;
             outline: 0;
@@ -27,12 +28,14 @@
             -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
         }
+
         .jumbo {
             font-size: 3.5em;
             background: -webkit-radial-gradient(circle, #dedede 0%, #949494 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         button {
             background-color: rgb(194, 166, 81);
             color: white;
@@ -40,77 +43,80 @@
             border: none;
             border-radius: 50px;
         }
-        @font-face {
-    font-family: noto-serif-bold;
-    src: url(./assets/fonts/NotoSansTC-Bold.otf);
-}
 
-@font-face {
-    font-family: noto-san-bold;
-    src: url(./assets/fonts/NotoSansTC-Bold.otf);
-}
+        @@font-face {
+            font-family: noto-serif-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
 
-@font-face {
-    font-family: noto-san-light;
-    src: url(./assets/fonts/NotoSansTC-Light.otf);
-}
+        @@font-face {
+            font-family: noto-san-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
 
-@font-face {
-    font-family: noto-san-medium;
-    src: url(./assets/fonts/NotoSansTC-Medium.otf);
-}
+        @@font-face {
+            font-family: noto-san-light;
+            src: url(./assets/fonts/NotoSansTC-Light.otf);
+        }
 
-body {
-    font-family: noto-san-medium;
-    letter-spacing: 0.1em;
-    color: var(--dark-color);
-}
+        @@font-face {
+            font-family: noto-san-medium;
+            src: url(./assets/fonts/NotoSansTC-Medium.otf);
+        }
 
-h1, h2, h3, h4 {
-    font-family: noto-san-bold;
-    line-height: 1.5em;
-}
+        body {
+            font-family: noto-san-medium;
+            letter-spacing: 0.1em;
+            color: var(--dark-color);
+        }
 
-h1 {
-    font-size: 2.4em;
-}
+        h1, h2, h3, h4 {
+            font-family: noto-san-bold;
+            line-height: 1.5em;
+        }
 
-h2 {
-    font-size: 2em;
-}
+        h1 {
+            font-size: 2.4em;
+        }
 
-h3 {
-    font-size: 1.75em;
-}
+        h2 {
+            font-size: 2em;
+        }
 
-h4 {
-    font-size: 1.5em;
-}
+        h3 {
+            font-size: 1.75em;
+        }
 
-h6 {
-    font-size: 1em;
-}
+        h4 {
+            font-size: 1.5em;
+        }
 
-label {
-    font-size: 0.9em;
-}
-a {
-    color: black;
-}
-a:hover {
-    text-decoration: none;
-    color: grey;
-}
+        h6 {
+            font-size: 1em;
+        }
 
-.text-black {
-    color: black;
-}
+        label {
+            font-size: 0.9em;
+        }
 
-@media only screen and (max-width: 568px) {
-    body {
-        font-size: 0.8em;
-    }
-}
+        a {
+            color: black;
+        }
+
+            a:hover {
+                text-decoration: none;
+                color: grey;
+            }
+
+        .text-black {
+            color: black;
+        }
+
+        @@media only screen and (max-width: 568px) {
+            body {
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 
@@ -120,7 +126,7 @@ a:hover {
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-6 mr-30 text-white">
                     <img src="./assets/bg-plan-head-logo.png" class="img-fluid w-50 mb-4">
-                    <h1 class="jumbo mb-5">最親民的<br/>個人與家庭律師服務</h1>
+                    <h1 class="jumbo mb-5">最親民的<br />個人與家庭律師服務</h1>
                 </div>
                 <div class="col-lg-5 col-md-6 mr-30">
                     <img src="./assets/bg-product-dot-plan.png" class="img-fluid">
@@ -131,7 +137,7 @@ a:hover {
                     <h2>每年只要830元，立即享有！</h2>
                 </div>
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
                 <div class="col-12">
                     <div class="row">
@@ -181,9 +187,13 @@ a:hover {
                         </div>
                         <div class="form-group mb-4">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-lg mb-4 mb-lg-0">
                                     <label for="PhoneNumber">手機號碼</label>
                                     <input type="tel" class="form-control" id="PhoneNumber" required="required">
+                                </div>
+                                <div class="col-md">
+                                    <label for="PhoneNumber">再輸入一次手機號碼</label>
+                                    <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
                                 </div>
                             </div>
                         </div>
@@ -191,15 +201,15 @@ a:hover {
                             <div class="row">
                                 <div class="col-lg-6 mb-4 mb-lg-0 card-number-group">
                                     <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
-                                    <input class="form-control card-number">
+                                    <div class="form-control card-number"></div>
                                 </div>
                                 <div class="col expiration-date-group">
                                     <label for="expiration-date" class="control-label">到期日</label>
-                                    <input class="form-control expiration-date" id="tappay-expiration-date">
+                                    <div class="form-control expiration-date" id="tappay-expiration-date"></div>
                                 </div>
                                 <div class="col cvc-group">
                                     <label for="cvc" class="control-label">安全碼</label>
-                                    <input class="form-control cvc">
+                                    <div class="form-control ccv"></div>
                                 </div>
                             </div>
                         </div>
@@ -208,21 +218,21 @@ a:hover {
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col">
-                          <h6>付款金額</h6>
-                          <h1 class="total-amount">NT$830<small>/年</small></h1>
+                            <h6>付款金額</h6>
+                            <h1 class="total-amount">NT$830<small>/年</small></h1>
                         </div>
-                      </div>
-                      <div class="row">
+                    </div>
+                    <div class="row">
                         <div class="col">
-                          <ol class="pl-3">
-                            <li>會員期間不限次數使用線上和解書服務</li>
-                            <li>會員期間享有30分鐘法律諮詢或文件撰寫</li>
-                          </ol>
-                          <button type="submit" class="button w-100" disabled>
-                            <h2 class="mb-0">開通服務</h2>
-                        </button>
+                            <ol class="pl-3">
+                                <li>會員期間不限次數使用線上和解書服務</li>
+                                <li>會員期間享有30分鐘法律諮詢或文件撰寫</li>
+                            </ol>
+                            <button type="submit" class="button w-100" disabled>
+                                <h2 class="mb-0">開通服務</h2>
+                            </button>
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -352,14 +362,27 @@ a:hover {
                     swal("卡號授權狀態異常", "get prime error" + result.msg, "error", { button: "Cancel" });
                     return
                 }
-                //TODO 測試用，上線前改為POST
-                var url = "Index?handler=SnedData";
-                url += "&Prime=" + result.card.prime;
-                url += "&FirstName=" + firstName
-                url += "&LastName=" + lastName
-                url += "&PhoneNumber=" + phoneNumber
-                url += "&Email=" + email
-                $.get(url).done(function (res) {
+
+                var postData = {
+                    "Prime": result.card.prime,
+                    "FirstName": firstName,
+                    "LastName": lastName,
+                    "PhoneNumber": phoneNumber,
+                    "Email": email
+                };
+
+                $.ajax({
+                    method: "post",
+                    url: "Index?handler=SnedData",
+                    data: postData,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    error: function (xhr, status, err) {
+                        swal("網路發生異常，請聯絡客服人員。", err + " status:" + status, "error", { button: "Cancel" });
+                    }
+                }).done(function (res) {
                     var obj = jQuery.parseJSON(res);
                     if (obj.status === "0") {
                         swal(obj.msg, "", "success", { button: "Cancel" });
@@ -371,6 +394,7 @@ a:hover {
                         $('button[type="submit"]').attr('disabled', true)
                     }
                 });
+
             })
         })
 
