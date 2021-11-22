@@ -1,0 +1,25 @@
+# Default values for pamo-law-firm-sales-campaign.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+pamoIndividualBatch:
+  enabled: true
+
+image:
+  repository: 297947219285.dkr.ecr.ap-southeast-1.amazonaws.com/pamo-law-firm-sales-campaign
+
+service:
+  type: NodePort
+
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{ "HTTP" : 80 }, { "HTTPS" : 443 }]'
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{ "Type" : "redirect", "RedirectConfig" : { "Protocol" : "HTTPS", "Port" : "443", "StatusCode" : "HTTP_301" } }'
+    alb.ingress.kubernetes.io/group.name: pamo
+  hosts:
+    - host: join.office.pamolaw.com
+      paths:
+        - '/*'

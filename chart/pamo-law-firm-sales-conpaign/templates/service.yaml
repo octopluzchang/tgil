@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "pamo-law-firm-sales-campaign.fullname" . }}
+  labels:
+    {{- include "pamo-law-firm-sales-campaign.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "pamo-law-firm-sales-campaign.selectorLabels" . | nindent 4 }}
