@@ -64,9 +64,10 @@ build:
   image : mcr.microsoft.com/dotnet/sdk:5.0
   script:
     - dotnet build
+    - dotnet publish -c Release
   artifacts:
     paths:
-    - dist/
+      - publish/
 
 deploy-image:
   extends: .deploy-image
