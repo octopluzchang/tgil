@@ -139,13 +139,14 @@ namespace PAMO_TapPay.Pages
                 TwilioClient.Init(AccountSid, AuthToken);
 
                 var message = MessageResource.Create(
-                    body: $"【{fullName}】您好，點擊網址完成註冊後即可使用PAMO安心方案的法律科技服務。{tempPamoUrl}",
+                    body: $"{fullName}您好，點擊網址完成註冊後即可使用PAMO安心方案的法律科技服務。\n{tempPamoUrl}",
                     from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
                     to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );
 
                 if (message.ErrorCode == null)
                 {
+                    _logger.Trace("_Done:" + JsonConvert.SerializeObject(message));
                     result = "{\"status\":\"0\",\"msg\":\"付款成功！簡訊已寄出，請留意您手機訊息。\"}";
                 }
                 else
@@ -155,7 +156,6 @@ namespace PAMO_TapPay.Pages
                 }
                 #endregion
 
-                _logger.Trace("_Done:" + JsonConvert.SerializeObject(message));
             }
             catch (Exception ex)
             {
