@@ -1,0 +1,470 @@
+﻿@page
+@model RentalcarModel
+@{
+    ViewData["Title"] = "負擔保紙本租賃合約";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @Html.AntiForgeryToken()
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        #header {
+            background-color: rgb(36, 36, 36);
+        }
+
+        .tappay-field-focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .has-error .tappay-field-focus {
+            border-color: #843534;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+        }
+
+        .has-success .tappay-field-focus {
+            border-color: #2b542c;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+        }
+
+        .jumbo {
+            font-size: 3.5em;
+            background: -webkit-radial-gradient(circle, #dedede 0%, #949494 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        button {
+            background-color: rgb(194, 166, 81);
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+        }
+
+        @@font-face {
+            font-family: noto-serif-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
+
+        @@font-face {
+            font-family: noto-san-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
+
+        @@font-face {
+            font-family: noto-san-light;
+            src: url(./assets/fonts/NotoSansTC-Light.otf);
+        }
+
+        @@font-face {
+            font-family: noto-san-medium;
+            src: url(./assets/fonts/NotoSansTC-Medium.otf);
+        }
+
+        body {
+            font-family: noto-san-medium;
+            letter-spacing: 0.1em;
+            color: var(--dark-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: noto-san-bold;
+            line-height: 1.5em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.75em;
+        }
+
+        h4 {
+            font-size: 1.5em;
+        }
+
+        h6 {
+            font-size: 1em;
+        }
+
+        label {
+            font-size: 0.9em;
+        }
+
+        a {
+            color: black;
+        }
+
+            a:hover {
+                text-decoration: none;
+                color: grey;
+            }
+
+        .text-black {
+            color: black;
+        }
+
+        @@media only screen and (max-width: 568px) {
+            body {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header" class="pb-5">
+        <div class="container pt-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-6 mr-30 text-white">
+                    <img src="./assets/bg-plan-head-logo.png" class="img-fluid w-50 mb-4">
+                    <h1 class="jumbo mb-5">最親民的<br />個人與家庭律師服務</h1>
+                </div>
+                <div class="col-lg-5 col-md-6 mr-30">
+                    <img src="./assets/bg-product-dot-plan.png" class="img-fluid">
+                </div>
+            </div>
+            <div class="row text-white pt-5 pt-md-0">
+                <div class="col-auto">
+                    <h2>每年只要830元，立即享有！</h2>
+                </div>
+                <div class="col">
+                    <hr />
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row align-items-center">
+                                <div class="col-lg-auto col-5 pr-0">
+                                    <img src="./assets/bg-plan-head-feature-1.png" class="img-fluid">
+                                </div>
+                                <div class="col pl-0">
+                                    <h3>線上和解書</h3>
+                                    <small>全年不限使用次數，面對小事故的快速安全處理方法</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row align-items-center">
+                                <div class="col-lg-auto col-5 pr-0">
+                                    <img src="./assets/bg-plan-head-feature-2.png" class="img-fluid">
+                                </div>
+                                <div class="col pl-0">
+                                    <h3>免費法律服務</h3>
+                                    <small>每年30分鐘，為個人與家庭打造的家庭律師，一般民刑事問題，或是需要捍衛權益，通通可以！</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form class="pt-5 pb-5">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <div class="card p-4">
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="LastName">姓</label>
+                                    <input type="text" class="form-control" id="LastName" required="required">
+                                </div>
+                                <div class="col">
+                                    <label for="FirstName">名</label>
+                                    <input type="text" class="form-control" id="FirstName" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col-lg mb-4 mb-lg-0">
+                                    <label for="PhoneNumber">手機號碼</label>
+                                    <input type="tel" class="form-control" id="PhoneNumber" required="required">
+                                </div>
+                                <div class="col-md">
+                                    <label for="PhoneNumber">再輸入一次手機號碼</label>
+                                    <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4 mb-lg-0 card-number-group">
+                                    <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
+                                    <div class="form-control card-number"></div>
+                                </div>
+                                <div class="col expiration-date-group">
+                                    <label for="expiration-date" class="control-label">到期日</label>
+                                    <div class="form-control expiration-date" id="tappay-expiration-date"></div>
+                                </div>
+                                <div class="col cvc-group">
+                                    <label for="cvc" class="control-label">安全碼</label>
+                                    <div class="form-control cvc"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col">
+                            <h6>付款金額</h6>
+                            <h1 class="total-amount">NT$830<small>/年</small></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <ol class="pl-3">
+                                <li>會員期間不限次數使用線上和解書服務</li>
+                                <li>會員期間享有30分鐘法律諮詢或文件撰寫</li>
+                            </ol>
+                            <button type="submit" class="button w-100" disabled>
+                                <h2 class="mb-0">開通服務</h2>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        TPDirect.setupSDK(@Model.AppID, '@Model.AppKey', '@Model.Env')
+        TPDirect.card.setup({
+            fields: {
+                number: {
+                    element: '.form-control.card-number',
+                    placeholder: '**** **** **** ****'
+                },
+                expirationDate: {
+                    element: document.getElementById('tappay-expiration-date'),
+                    placeholder: 'MM / YY'
+                },
+                ccv: {
+                    element: $('.form-control.cvc')[0],
+                    placeholder: '後三碼'
+                }
+            },
+            styles: {
+                'input': {
+                    'color': 'gray'
+                },
+                'input.ccv': {
+                    // 'font-size': '16px'
+                },
+                ':focus': {
+                    'color': 'black'
+                },
+                '.valid': {
+                    'color': 'green'
+                },
+                '.invalid': {
+                    'color': 'red'
+                }
+            }
+        })
+        // listen for TapPay Field
+        TPDirect.card.onUpdate(function (update) {
+            /* Disable / enable submit button depend on update.canGetPrime  */
+            /* ============================================================ */
+
+            // update.canGetPrime === true
+            //     --> you can call TPDirect.card.getPrime()
+            // const submitButton = document.querySelector('button[type="submit"]')
+            if (update.canGetPrime) {
+                // submitButton.removeAttribute('disabled')
+                $('button[type="submit"]').removeAttr('disabled')
+            } else {
+                // submitButton.setAttribute('disabled', true)
+                $('button[type="submit"]').attr('disabled', true)
+            }
+
+
+            /* Change card type display when card type change */
+            /* ============================================== */
+
+            // cardTypes = ['visa', 'mastercard', ...]
+            var newType = update.cardType === 'unknown' ? '' : update.cardType
+            $('#cardtype').text(newType)
+
+
+
+            /* Change form-group style when tappay field status change */
+            /* ======================================================= */
+
+            // number 欄位是錯誤的
+            if (update.status.number === 2) {
+                setNumberFormGroupToError('.card-number-group')
+            } else if (update.status.number === 0) {
+                setNumberFormGroupToSuccess('.card-number-group')
+            } else {
+                setNumberFormGroupToNormal('.card-number-group')
+            }
+
+            if (update.status.expiry === 2) {
+                setNumberFormGroupToError('.expiration-date-group')
+            } else if (update.status.expiry === 0) {
+                setNumberFormGroupToSuccess('.expiration-date-group')
+            } else {
+                setNumberFormGroupToNormal('.expiration-date-group')
+            }
+
+            if (update.status.cvc === 2) {
+                setNumberFormGroupToError('.cvc-group')
+            } else if (update.status.cvc === 0) {
+                setNumberFormGroupToSuccess('.cvc-group')
+            } else {
+                setNumberFormGroupToNormal('.cvc-group')
+            }
+        })
+
+        $('form').on('submit', function (event) {
+
+            var phoneNumber = $('#PhoneNumber').val()
+            var confirmPhoneNumber = $('#ConfirmPhoneNumber').val()
+            var email = $('#Email').val()
+            var firstName = $('#FirstName').val()
+            var lastName = $('#LastName').val()
+
+            event.preventDefault()
+
+            // fix keyboard issue in iOS device
+            forceBlurIos()
+
+            const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+            console.log(tappayStatus)
+
+            // Check Basic Info
+            if (isMobile(phoneNumber) === false) {
+                swal("請輸入正確的手機號碼!", "error phone format", "error", { button: "Cancel" });
+                return
+            }
+            if (confirmPhoneNumber !== phoneNumber) {
+                swal("兩次輸入手機號碼不相同，請重新確認。", "phone number is different", "error", { button: "Cancel" });
+                return
+            }
+
+            // Check TPDirect.card.getTappayFieldsStatus().canGetPrime before TPDirect.card.getPrime
+            if (tappayStatus.canGetPrime === false) {
+                swal("卡號授權取得異常", "can not get prime", "error", { button: "Cancel" });
+                return
+            }
+
+            // Get prime
+            TPDirect.card.getPrime(function (result) {
+                if (result.status !== 0) {
+                    swal("卡號授權狀態異常", "get prime error" + result.msg, "error", { button: "Cancel" });
+                    return
+                }
+
+                // Loading Lock
+                swal({
+                    title: "服務開通中，請稍待片刻",
+                    text: "Please wait while we activate your service.",
+                    icon: "./assets/loading.gif",
+                    buttons: false,
+                    closeOnClickOutside: false,
+                    timer: 10000,
+                });
+
+                var postData = {
+                    "Prime": result.card.prime,
+                    "FirstName": firstName,
+                    "LastName": lastName,
+                    "PhoneNumber": phoneNumber,
+                    "Email": email
+                };
+
+                $.ajax({
+                    method: "post",
+                    url: "Rentalcar?handler=SnedData",
+                    data: postData,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    error: function (xhr, status, err) {
+                        shutDownSwal;
+                        swal("網路發生異常，請聯絡客服人員。", err + " status:" + status, "error", { button: "Cancel" });
+                    }
+                }).done(function (res) {
+                    shutDownSwal;
+                    var obj = jQuery.parseJSON(res);
+                    if (obj.status === "0") {
+                        swal(obj.msg, "", "success", { button: "Cancel" });
+                    } else {
+                        swal(obj.msg, "status:" + obj.status, "error", { button: "Cancel" });
+                    }
+                    if (obj.status === "0" || obj.status === "-3") {
+                        $('.form-control').attr('disabled', true)
+                        $('button[type="submit"]').attr('disabled', true)
+                    }
+                });
+
+            })
+        })
+
+        function setNumberFormGroupToError(selector) {
+            $(selector).addClass('has-error')
+            $(selector).removeClass('has-success')
+        }
+
+        function setNumberFormGroupToSuccess(selector) {
+            $(selector).removeClass('has-error')
+            $(selector).addClass('has-success')
+        }
+
+        function setNumberFormGroupToNormal(selector) {
+            $(selector).removeClass('has-error')
+            $(selector).removeClass('has-success')
+        }
+
+        function forceBlurIos() {
+            if (!isIos()) {
+                return
+            }
+            var input = document.createElement('input')
+            input.setAttribute('type', 'text')
+            // Insert to active element to ensure scroll lands somewhere relevant
+            document.activeElement.prepend(input)
+            input.focus()
+            input.parentNode.removeChild(input)
+        }
+
+        function isIos() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        function isMobile(s)
+        {
+            var reg = /^09[0-9]{8}$/;
+            return reg.test(s)
+        }
+
+        function shutDownSwal() {
+            $(".swal-overlay").removeClass("swal-overlay--show-modal");
+        }
+
+    </script>
+</body>
+
+</html>
