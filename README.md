@@ -8,14 +8,16 @@ dotnet publish -c Release 發佈後就可以進行DockerFile操作
 
 #appsettings.json
 appsettings.json為專案設定檔
+#TapPay設定檔:
 已填寫完畢只需把"沙盒參數"註換成正式參數即可
 >>TapPayInfo
+
 下列三項再麻煩自行修改
-簡訊設定檔:
+#簡訊設定檔:
 >>TwilioInfo
-PAMO相關設定檔:
+#PAMO相關設定檔:
 >>PamoInfo
-縮短網址設定檔:
+#縮短網址設定檔:
 >>Bitly
 
 #NLog.config
