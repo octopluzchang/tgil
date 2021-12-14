@@ -1,0 +1,1007 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        #header {
+            /* background-color: rgb(36, 36, 36); */
+        }
+
+        .tappay-field-focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .has-error .tappay-field-focus {
+            border-color: #843534;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+        }
+
+        .has-success .tappay-field-focus {
+            border-color: #2b542c;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+        }
+
+        .jumbo {
+            font-size: 3.5em;
+            background: -webkit-radial-gradient(circle, #d6bc83 0%, #886e19 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        button {
+            background-color: rgb(194, 166, 81);
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .mockup {
+            transform: scale(1.5) translateX(-10%);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .mockup {
+                transform: scale(1.2) translateX(-6%);
+            }
+        }
+        .option {
+            background-color: #f2f2f2;
+            background-blend-mode: luminosity;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+        .option.selected {
+            background-color: rgb(194, 166, 81);
+        }
+        .option.who {
+            margin-top: 10px;
+            padding-top: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: 100%;
+        }
+        .option.who.a {
+            background-image: url(./assets/bg_compensator_0@2x.png);
+        }
+        .option.who.b {
+            background-image: url(./assets/bg_compensator_1@2x.png);
+        }
+        .option.who.c {
+            background-image: url(./assets/bg_compensator_2@2x.png);
+        }
+        .option.how {
+            margin-top: 10px;
+            padding: 15% 0;
+            width: 100%;
+            background-position: left;
+            background-size: auto 100%;
+            color: black;
+            font-size: 1.5em;
+            position: relative;
+        }
+        .option.how .text {
+            position: absolute;
+            display: block;
+            z-index: 1;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 50%;
+        }
+        .option.how::after {
+            content: '';
+            background-color: inherit;
+            clip-path: polygon(61% 0, 100% 50%, 58% 100%, 0% 100%, 0 50%, 0% 0%);
+            position: absolute;
+            top: 0;
+            right: -12%;
+            width: 27%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .option.how.a {
+            background-image: url(./assets/bg_compensation_1@2x.png);
+        }
+        .option.how.b {
+            background-image: url(./assets/bg_compensation_2@2x.png);
+        }
+        .option.how.c {
+            background-image: url(./assets/bg_compensation_3@2x.png);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .option.how {
+                padding: 50%;
+                background-position: top center;
+                background-size: 100%;
+            }
+            .option.how .text {
+                display: none;
+            }
+            .option.how::after {
+                display: none;
+            }
+        }
+
+        .faq-content {
+            display: none;
+            border: 1px solid #d1d1d1;
+            padding: 20px;
+            margin: 20px;
+        }
+        .bg-dark {
+            background-color: #393939;
+        }
+
+        .partner {
+            opacity: 0.7;
+        }
+
+        @font-face {
+            font-family: noto-serif-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
+
+        @font-face {
+            font-family: noto-san-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
+
+        @font-face {
+            font-family: noto-san-light;
+            src: url(./assets/fonts/NotoSansTC-Light.otf);
+        }
+
+        @font-face {
+            font-family: noto-san-medium;
+            src: url(./assets/fonts/NotoSansTC-Medium.otf);
+        }
+
+        body {
+            font-family: noto-san-medium;
+            letter-spacing: 0.1em;
+            color: var(--dark-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: noto-san-bold;
+            line-height: 1.5em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.75em;
+        }
+
+        h4 {
+            font-size: 1.5em;
+        }
+
+        h6 {
+            font-size: 1em;
+        }
+
+        label {
+            font-size: 0.9em;
+        }
+
+        a {
+            color: black;
+        }
+
+            a:hover {
+                text-decoration: none;
+                color: grey;
+            }
+
+        .text-black {
+            color: black;
+        }
+
+        @@media only screen and (max-width: 568px) {
+            body {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header" class="pb-5">
+        <div class="container pt-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 pt-5 pb-5">
+                    <img src="./assets/bg-plan-head-logo.png" class="img-fluid w-50 mb-4">
+                    <h1 class="jumbo mb-5">最親民的<br />個人與家庭律師服務</h1>
+                    <div class="row">
+                        <div class="col-auto">
+                            <h2>每年只要830元，立即享有！</h2>
+                        </div>
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row align-items-center">
+                                <div class="col-lg-auto col-5 pr-0">
+                                    <img src="./assets/bg-plan-head-feature-1.png" class="img-fluid">
+                                </div>
+                                <div class="col pl-0">
+                                    <h3>線上和解書</h3>
+                                    <p>全年不限使用次數，面對小事故的快速安全處理方法</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row align-items-center">
+                                <div class="col-lg-auto col-5 pr-0">
+                                    <img src="./assets/bg-plan-head-feature-2.png" class="img-fluid">
+                                </div>
+                                <div class="col pl-0">
+                                    <h3>免費法律服務</h3>
+                                    <p>每年30分鐘，為個人與家庭打造的家庭律師，一般民刑事問題，或是需要捍衛權益，通通可以！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 pt-5 pb-5" id="pay">
+                    <div class="card p-4">
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="LastName">姓</label>
+                                    <input type="text" class="form-control" id="LastName" required="required">
+                                </div>
+                                <div class="col">
+                                    <label for="FirstName">名</label>
+                                    <input type="text" class="form-control" id="FirstName" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col-lg mb-4 mb-lg-0">
+                                    <label for="PhoneNumber">手機號碼</label>
+                                    <input type="tel" class="form-control" id="PhoneNumber" required="required">
+                                </div>
+                                <div class="col-md">
+                                    <label for="PhoneNumber">再輸入一次手機號碼</label>
+                                    <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4 mb-lg-0 card-number-group">
+                                    <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
+                                    <div class="form-control card-number"></div>
+                                </div>
+                                <div class="col expiration-date-group">
+                                    <label for="expiration-date" class="control-label">到期日</label>
+                                    <div class="form-control expiration-date" id="tappay-expiration-date"></div>
+                                </div>
+                                <div class="col cvc-group">
+                                    <label for="cvc" class="control-label">安全碼</label>
+                                    <div class="form-control ccv"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-5 pb-5">
+                        <div class="col-12">
+                            <h6>付款金額</h6>
+                            <h1 class="total-amount">NT$830<small>/年</small></h1>
+                        </div>
+                        <div class="col-12">
+                            <ol class="pl-3">
+                                <li>會員期間不限次數使用線上和解書服務</li>
+                                <li>會員期間享有30分鐘法律諮詢或文件撰寫</li>
+                            </ol>
+                            <button type="submit" class="button w-100" disabled>
+                                <h2 class="mb-0">開通服務</h2>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark text-white">
+        <div class="container">
+            <form class="pt-5 pb-5">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <img src="./assets/bg_product_mockup.png" class="img-fluid mockup">
+                    </div>
+                    <div class="col-md-7">
+                        <h1 class="jumbo">PAMO線上和解書<br />確保車禍和解都能付諸實現</h1>
+                        <h5 class="mb-5">誰賠誰、怎麼賠<br />只要點一點，就會幫您寫的清清楚楚</h5>
+                        <button class="button btn-cta">
+                            <h2 class="mb-0">開通服務</h2>
+                        </button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div class="container text-center">
+            <div class="pt-5 pb-5">
+                <h1>誰該賠，就點誰</h1>
+                <div class="row">
+                    <div class="col-4 pr-0">
+                        <div class="who option a selected"></div>
+                        我方
+                    </div>
+                    <div class="col-4 pl-0 pr-0">
+                        <div class="who option b"></div>
+                        對方
+                    </div>
+                    <div class="col-4 pr-0">
+                        <div class="who option c"></div>
+                        互不賠償
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark text-white">
+        <div class="container text-lg-left text-center">
+            <div class="pt-5 pb-5">
+                <h1>該怎麼賠，就怎麼點</h1>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12 col-4">
+                                <div class="how option a selected">
+                                    <span class="text">只賠錢</span>
+                                </div>
+                                <span class="d-md-none d-block">只賠錢</span>
+                            </div>
+                            <div class="col-md-12 col-4">
+                                <div class="how option b">
+                                    <span class="text">只修車</span>
+                                </div>
+                                <span class="d-md-none d-block">只修車</span>
+                            </div>
+                            <div class="col-md-12 col-4">
+                                <div class="how option c">
+                                    <span class="text">修車 + 賠錢<br/>(營業損失)</span>
+                                </div>
+                                <span class="d-md-none d-block">修車 + 賠錢<br/>(營業損失)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col option-display">
+                        <img src="./assets/bg_option_how_a.png" class="img-fluid a">
+                        <img src="./assets/bg_option_how_b.png" class="img-fluid b d-none">
+                        <img src="./assets/bg_option_how_c.png" class="img-fluid c d-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container text-center">
+            <div class="pt-5 pb-5">
+                <h1>只要1分鐘，<br class="d-lg-none d-block"/>保障帶著走</h1>
+                <button class="button btn-cta">
+                    <h2 class="mb-0">開通服務</h2>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="pt-5 pb-5 bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <img src="./assets/bg-product-dot-plan.png" class="img-fluid">
+                </div>
+                <div class="col-lg-5">
+                    <h1 class="jumbo">免費法律服務<br/>確保需要時有專人可以協助</h1>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 col-4 pr-0">
+                                    <img src="./assets/bg-plan-head-feature-1.png" class="img-fluid">
+                                </div>
+                                <div class="col pl-0">
+                                    <h3>預約法律支援</h3>
+                                    <p>一通電話，隨即為您預約</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 col-4 pr-0">
+                                    <img src="./assets/bg-plan-head-feature-2.png" class="img-fluid">
+                                </div>
+                                <div class="col pl-0">
+                                    <h3>每年30分鐘免費</h3>
+                                    <p>幫您處理車禍後續相關問題</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container text-center">
+            <div class="pt-5 pb-5">
+                <h1 class="mb-5">與我們合作的夥伴</h1>
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-mcd.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-npl.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-yoxi.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-robinstech.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-dimerco.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-lalamove.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-gogovan.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-gogoout.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-giftpack.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-omnie.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-tada.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-tms.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4">
+                        <div class="partner">
+                            <img src="./assets/logo-55688.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div>
+        <div class="container pt-5 pb-5">
+            <h1 class="text-center">非PAMO不可的理由</h1>
+            <div class="row align-items-center faq-item">
+                <div class="col-md-auto"><h1 class="jumbo text-md-left text-center">1</h1></div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col"><h3 class="text-md-start text-center">PAMO線上和解書跟「紙本和解書」有什麼不同？</h3></div>
+                        <div class="col-lg-2 col-md-4 text-center">
+                            <p>PAMO提供的<br/>不只是工具</p>
+                            <button class="button w-100 btn-faq">
+                                瞭解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="faq-content">
+                            <div class="table">
+                                <table class="w-100">
+                                    <tbody><tr>
+                                        <th>項目／比較</th>
+                                        <th>紙本和解書</th>
+                                        <th>PAMO線上和解書</th>
+                                    </tr>
+                                    <tr>
+                                        <td>售後服務</td>
+                                        <td>無</td>
+                                        <td>有</td>
+                                    </tr>
+                                    <tr>
+                                        <td>保存</td>
+                                        <td>自行保存</td>
+                                        <td>電磁紀錄</td>
+                                    </tr>
+                                    <tr>
+                                        <td>步驟</td>
+                                        <td>繁雜</td>
+                                        <td>簡單</td>
+                                    </tr>
+                                    <tr>
+                                        <td>時間</td>
+                                        <td>至少50分鐘</td>
+                                        <td>1分鐘內</td>
+                                    </tr>
+                                    <tr>
+                                        <td>地點</td>
+                                        <td>限制</td>
+                                        <td>不限位置</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <h4>a. 售後服務</h4>
+                            <p>說好和解，對方還反悔賴皮！？我該怎麼辦？</p>
+                            <div class="table">
+                                <table class="w-100">
+                                   <tbody><tr>
+                                       <th>紙本和解書</th>
+                                        <th>PAMO線上和解書</th>
+                                   </tr>
+                                    <tr>
+                                        <td>求助無門</td>
+                                        <td>PAMO會委派合作律所幫您處理，費用由PAMO負擔。<br>包含「刑事偵查程序」及「民事第一審」</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <h4>b. 保存方式</h4>
+                            <p>刑事及民事的告訴期間分別為半年及兩年，所以和解文件至少要保存兩年！</p>
+                            <div class="table">
+                                <table class="w-100">
+                                   <tbody><tr>
+                                       <th>紙本和解書</th>
+                                        <th>PAMO線上和解書</th>
+                                   </tr>
+                                    <tr>
+                                        <td>突然需要卻找不到</td>
+                                        <td>對方當下就會收到含有文件的簡訊，同時您的信箱、LINE也都會收到完成的和解書。當然PAMO雲端也會有備份。</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                            <h4>c. 時間＆步驟</h4>
+                            <p>PAMO知道大多數的你，都不會放和解書在車上</p>
+                            <div class="table">
+                                <table class="w-100">
+                                   <tbody><tr>
+                                      <th></th>
+                                       <th>紙本和解書</th>
+                                        <th>PAMO線上和解書</th>
+                                   </tr>
+                                    <tr>
+                                        <td>和解書製作步驟</td>
+                                        <td>
+                                            <ol>
+                                                <li>Google搜索</li>
+                                                <li>從各種範本中挑選一個看得懂的版本</li>
+                                                <li>移動到最近的便利商店列印</li>
+                                                <li>找筆手動填寫資料</li>
+                                                <li>再抄寫一遍，因為一式兩份</li>
+                                                <li>雙方簽名</li>
+                                                <li>完成</li>
+                                            </ol>
+                                        </td>
+                                        <td>
+                                           <ol>
+                                               <li>打開ＬＩＮＥ</li>
+                                               <li>事件紀錄</li>
+                                               <li>點選和解條件</li>
+                                               <li>身份驗證</li>
+                                               <li>輕鬆完成</li>
+                                           </ol>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>需要的時間</td>
+                                        <td>至少 50 分鐘</td>
+                                        <td>只要 1 分鐘</td>
+                                    </tr>
+                                    <tr>
+                                        <td>簽約地點限制</td>
+                                        <td>附近 7-11</td>
+                                        <td>隨時隨地</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row align-items-center faq-item">
+                <div class="col-md-auto"><h1 class="jumbo text-md-left text-center">2</h1></div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col"><h3 class="text-md-start text-center">我有保險還需要PAMO嗎？</h3></div>
+                        <div class="col-lg-2 col-md-4 text-center">
+                            <p><small>PAMO是互補保險<br/>的法律服務</small></p>
+                            <button class="button w-100 btn-faq">
+                                瞭解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="faq-content">
+                            <p>根據PAMO的後台統計，62％的車禍案件，其平均和解金額為2,200元。在這樣的金額下，出險所需付出的「時間成本」，包含筆錄、通知保險、理賠審核與撥款，與可能面臨的「保費調整」，都是使用者有保險仍選擇PAMO的原因。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row align-items-center faq-item">
+                <div class="col-md-auto"><h1 class="jumbo text-md-left text-center">3</h1></div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col"><h3 class="text-md-start text-center">PAMO線上和解書有法律效力嗎？</h3></div>
+                        <div class="col-lg-2 col-md-4 text-center">
+                            <p>
+                                <small>
+                                    律師針對PAMO<br/>
+                                    提出具體的法律意見書
+                                </small>
+                            </p>
+                            <button class="button w-100 btn-faq">
+                                瞭解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="faq-content">
+                            <p>PAMO線上和解書具有足夠的證據力，即使對方賴皮也可以成功防衛
+                                <br>證據力 ⭐️⭐️⭐️⭐️⭐️
+                                <br>防衛力 ⭐️⭐️⭐️⭐️⭐️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row align-items-center faq-item">
+                <div class="col-md-auto"><h1 class="jumbo text-md-left text-center">4</h1></div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col"><h3 class="text-md-start text-center">對方沒有PAMO捏！這樣也可以用嗎？</h3></div>
+                        <div class="col-lg-2 col-md-4 text-center">
+                            <p>為使用者訂製的<br/>法律科技</p>
+                            <button class="button w-100 btn-faq">
+                                瞭解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="faq-content">
+                            <p>PAMO線上和解書系統，是透過寄送「簡訊」的方式，將和解內容通知對方，一方面確認對方的手機號碼，一方面將讓對方也取得和解契約。因此，對方的手機只要可以收到簡訊，就可以使用PAMO的服務喔。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row align-items-center faq-item">
+                <div class="col-md-auto"><h1 class="jumbo text-md-left text-center">5</h1></div>
+                <div class="col">
+                    <div class="row align-items-center">
+                        <div class="col"><h3 class="text-md-start text-center">對方使用假車牌、假手機、假名字，我該怎麼辦？</h3></div>
+                        <div class="col-lg-2 col-md-4 text-center">
+                            <p>你的權益讓<br/>PAMO幫你捍衛</p>
+                            <button class="button w-100 btn-faq">
+                                瞭解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="faq-content">
+                            <p>放心，遇到這種鳥事，你只需要一通電話，PAMO就會接手處理。<br>
+                                別忘了PAMO還有法律顧問與合作律所，遇到這種事，我們直接交給專家來處理看看是要用「偽造文書」還是「詐欺」等方式來處理。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark text-white">
+        <div class="container text-center">
+            <div class="pt-5 pb-5">
+                <h1>只要1分鐘，保障帶著走</h1>
+                <button class="button btn-cta">
+                    <h2 class="mb-0">開通服務</h2>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="bg-dark text-white">
+        <div class="container text-center">
+            <div class="row pt-5 pb-5 justify-content-center">
+                <div class="col-2">
+                    <img src="./assets/bg_logo_main.png" class="img-fluid">
+                    <small class="text-white">聯絡電話<br/>02-5568-6412</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.option').click(function(){
+                $(this).parents('.row').find('.option').removeClass('selected')
+                $(this).addClass('selected')
+            })
+            $('.option.how.a').click(function(){
+                $('.option-display img').addClass('d-none')
+                $('.option-display .a').removeClass('d-none')
+            })
+            $('.option.how.b').click(function(){
+                $('.option-display img').addClass('d-none')
+                $('.option-display .b').removeClass('d-none')
+            })
+            $('.option.how.c').click(function(){
+                $('.option-display img').addClass('d-none')
+                $('.option-display .c').removeClass('d-none')
+            })
+
+            $('.btn-faq').click(function(){
+                $('.faq-content').hide()
+                $(this).parents('.faq-item').find('.faq-content').toggle()
+            })
+            //Scroll to pay
+            $(".btn-cta").click(function() {
+                $([document.documentElement, document.body]).animate({
+                scrollTop: $("#pay").offset().top
+                }, 500);
+            });
+        });
+    </script>
+    <script>
+        
+        TPDirect.setupSDK(@Model.AppID, '@Model.AppKey', '@Model.Env')
+        TPDirect.card.setup({
+            fields: {
+                number: {
+                    element: '.form-control.card-number',
+                    placeholder: '**** **** **** ****'
+                },
+                expirationDate: {
+                    element: document.getElementById('tappay-expiration-date'),
+                    placeholder: 'MM / YY'
+                },
+                ccv: {
+                    element: $('.form-control.cvc')[0],
+                    placeholder: '後三碼'
+                }
+            },
+            styles: {
+                'input': {
+                    'color': 'gray'
+                },
+                'input.ccv': {
+                    // 'font-size': '16px'
+                },
+                ':focus': {
+                    'color': 'black'
+                },
+                '.valid': {
+                    'color': 'green'
+                },
+                '.invalid': {
+                    'color': 'red'
+                }
+            }
+        })
+        // listen for TapPay Field
+        TPDirect.card.onUpdate(function (update) {
+            /* Disable / enable submit button depend on update.canGetPrime  */
+            /* ============================================================ */
+
+            // update.canGetPrime === true
+            //     --> you can call TPDirect.card.getPrime()
+            // const submitButton = document.querySelector('button[type="submit"]')
+            if (update.canGetPrime) {
+                // submitButton.removeAttribute('disabled')
+                $('button[type="submit"]').removeAttr('disabled')
+            } else {
+                // submitButton.setAttribute('disabled', true)
+                $('button[type="submit"]').attr('disabled', true)
+            }
+
+
+            /* Change card type display when card type change */
+            /* ============================================== */
+
+            // cardTypes = ['visa', 'mastercard', ...]
+            var newType = update.cardType === 'unknown' ? '' : update.cardType
+            $('#cardtype').text(newType)
+
+
+
+            /* Change form-group style when tappay field status change */
+            /* ======================================================= */
+
+            // number 欄位是錯誤的
+            if (update.status.number === 2) {
+                setNumberFormGroupToError('.card-number-group')
+            } else if (update.status.number === 0) {
+                setNumberFormGroupToSuccess('.card-number-group')
+            } else {
+                setNumberFormGroupToNormal('.card-number-group')
+            }
+
+            if (update.status.expiry === 2) {
+                setNumberFormGroupToError('.expiration-date-group')
+            } else if (update.status.expiry === 0) {
+                setNumberFormGroupToSuccess('.expiration-date-group')
+            } else {
+                setNumberFormGroupToNormal('.expiration-date-group')
+            }
+
+            if (update.status.cvc === 2) {
+                setNumberFormGroupToError('.cvc-group')
+            } else if (update.status.cvc === 0) {
+                setNumberFormGroupToSuccess('.cvc-group')
+            } else {
+                setNumberFormGroupToNormal('.cvc-group')
+            }
+        })
+
+        $('form').on('submit', function (event) {
+            var phoneNumber = $('#PhoneNumber').val()
+            var email = $('#Email').val()
+            var firstName = $('#FirstName').val()
+            var lastName = $('#LastName').val()
+
+            event.preventDefault()
+
+            // fix keyboard issue in iOS device
+            forceBlurIos()
+
+            const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+            console.log(tappayStatus)
+
+            // Check Basic Info
+            if (isMobile(phoneNumber) === false) {
+                swal("請輸入正確的手機號碼!", "error phone format", "error", { button: "Cancel" });
+                return
+            }
+
+            // Check TPDirect.card.getTappayFieldsStatus().canGetPrime before TPDirect.card.getPrime
+            if (tappayStatus.canGetPrime === false) {
+                swal("卡號授權取得異常", "can not get prime", "error", { button: "Cancel" });
+                return
+            }
+
+            // Get prime
+            TPDirect.card.getPrime(function (result) {
+                if (result.status !== 0) {
+                    swal("卡號授權狀態異常", "get prime error" + result.msg, "error", { button: "Cancel" });
+                    return
+                }
+
+                var postData = {
+                    "Prime": result.card.prime,
+                    "FirstName": firstName,
+                    "LastName": lastName,
+                    "PhoneNumber": phoneNumber,
+                    "Email": email
+                };
+
+                $.ajax({
+                    method: "post",
+                    url: "Index?handler=SnedData",
+                    data: postData,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    error: function (xhr, status, err) {
+                        swal("網路發生異常，請聯絡客服人員。", err + " status:" + status, "error", { button: "Cancel" });
+                    }
+                }).done(function (res) {
+                    var obj = jQuery.parseJSON(res);
+                    if (obj.status === "0") {
+                        swal(obj.msg, "", "success", { button: "Cancel" });
+                    } else {
+                        swal(obj.msg, "status:" + obj.status, "error", { button: "Cancel" });
+                    }
+                    if (obj.status === "0" || obj.status === "-3") {
+                        $('.form-control').attr('disabled', true)
+                        $('button[type="submit"]').attr('disabled', true)
+                    }
+                });
+
+            })
+        })
+
+        function setNumberFormGroupToError(selector) {
+            $(selector).addClass('has-error')
+            $(selector).removeClass('has-success')
+        }
+
+        function setNumberFormGroupToSuccess(selector) {
+            $(selector).removeClass('has-error')
+            $(selector).addClass('has-success')
+        }
+
+        function setNumberFormGroupToNormal(selector) {
+            $(selector).removeClass('has-error')
+            $(selector).removeClass('has-success')
+        }
+
+        function forceBlurIos() {
+            if (!isIos()) {
+                return
+            }
+            var input = document.createElement('input')
+            input.setAttribute('type', 'text')
+            // Insert to active element to ensure scroll lands somewhere relevant
+            document.activeElement.prepend(input)
+            input.focus()
+            input.parentNode.removeChild(input)
+        }
+
+        function isIos() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        function isMobile(s)
+        {
+            var reg = /^09[0-9]{8}$/;
+            return reg.test(s)
+        }
+        
+        
+
+    </script>
+</body>
+
+</html>
