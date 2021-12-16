@@ -30,7 +30,7 @@
         }
 
         .jumbo {
-            font-size: 3.5em;
+            font-size: 3.2em;
             background: -webkit-radial-gradient(circle, #d6bc83 0%, #886e19 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -139,6 +139,14 @@
             padding: 20px;
             margin: 20px;
         }
+
+        @media only screen and (max-width: 768px) {
+            .faq-content {
+                display: none;
+                padding: 10px;
+                margin: 10px 0px;
+            }
+        }
         .bg-dark {
             background-color: #393939;
         }
@@ -168,6 +176,7 @@
         }
 
         body {
+            font-size: 1.1em;
             font-family: noto-san-medium;
             letter-spacing: 0.1em;
             color: var(--dark-color);
@@ -198,12 +207,8 @@
             font-size: 1em;
         }
 
-        label {
-            font-size: 0.9em;
-        }
-
         a {
-            color: black;
+            color: rgb(194, 166, 81);
         }
 
             a:hover {
@@ -214,21 +219,32 @@
         .text-black {
             color: black;
         }
-
-        @media only screen and (max-width: 568px) {
-            body {
+        @media only screen and (max-width: 768px) {
+            table td {
                 font-size: 0.8em;
             }
         }
+        
     </style>
 </head>
 
 <body>
-    <div id="header" class="pb-5">
-        <div class="container pt-5">
+    <div id="nav" class="pt-3 pb-3 position-fixed w-100" style="z-index: 999; background-color: white;">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 pt-5 pb-5">
-                    <img src="./assets/bg-plan-head-logo.png" class="img-fluid w-50 mb-4">
+                <div class="col-lg-4 col">
+                    <a href="#"><img src="./assets/bg-plan-head-logo.png" class="img-fluid"></a>
+                </div>
+                <div class="col text-end">
+                    <button class="pt-2 pb-2 btn-cta">馬上購買</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header" class="pb-5 pt-5">
+        <div class="container pt-5">
+            <div class="row align-items-lg-stretch pt-5">
+                <div class="col-lg-6  pb-5">
                     <h1 class="jumbo mb-5">最親民的<br />個人與家庭律師服務</h1>
                     <div class="row">
                         <div class="col-auto">
@@ -263,62 +279,73 @@
                         </div>
                     </div>
                 </div>
-                <form class="col-lg-6 mb-4 pt-5 pb-5" id="pay">
-                    <div class="card p-4">
-                        <div class="form-group mb-4">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="LastName">姓</label>
-                                    <input type="text" class="form-control" id="LastName" required="required">
-                                </div>
-                                <div class="col">
-                                    <label for="FirstName">名</label>
-                                    <input type="text" class="form-control" id="FirstName" required="required">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="row">
-                                <div class="col-lg mb-4 mb-lg-0">
-                                    <label for="PhoneNumber">手機號碼</label>
-                                    <input type="tel" class="form-control" id="PhoneNumber" required="required">
-                                </div>
-                                <div class="col-md">
-                                    <label for="PhoneNumber">再輸入一次手機號碼</label>
-                                    <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="row">
-                                <div class="col-lg-6 mb-4 mb-lg-0 card-number-group">
-                                    <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
-                                    <div class="form-control card-number"></div>
-                                </div>
-                                <div class="col expiration-date-group">
-                                    <label for="expiration-date" class="control-label">到期日</label>
-                                    <div class="form-control expiration-date" id="tappay-expiration-date"></div>
-                                </div>
-                                <div class="col cvc-group">
-                                    <label for="cvc" class="control-label">安全碼</label>
-                                    <div class="form-control cvc"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row p-2">
+                <form class="col-lg-6 mb-4 pb-5" id="pay">
+                    <div class="row">
                         <div class="col-12">
-                            <h6>付款金額</h6>
-                            <h1 class="total-amount">NT$830<small>/年</small></h1>
+                            <div class="card p-4">
+                                <div class="form-group mb-4">
+                                    <h3>馬上購買</h3>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="LastName">姓</label>
+                                            <input type="text" class="form-control" id="LastName" required="required">
+                                        </div>
+                                        <div class="col">
+                                            <label for="FirstName">名</label>
+                                            <input type="text" class="form-control" id="FirstName" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <div class="row">
+                                        <div class="col-lg mb-4 mb-lg-0">
+                                            <label for="PhoneNumber">手機號碼</label>
+                                            <input type="tel" class="form-control" id="PhoneNumber" required="required">
+                                        </div>
+                                        <div class="col-md">
+                                            <label for="PhoneNumber">再輸入一次手機號碼</label>
+                                            <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4 mb-lg-0 card-number-group">
+                                            <label for="card-number" class="control-label"><span id="cardtype"></span>卡號</label>
+                                            <div class="form-control card-number"></div>
+                                        </div>
+                                        <div class="col expiration-date-group">
+                                            <label for="expiration-date" class="control-label">到期日</label>
+                                            <div class="form-control expiration-date" id="tappay-expiration-date"></div>
+                                        </div>
+                                        <div class="col cvc-group">
+                                            <label for="cvc" class="control-label">安全碼</label>
+                                            <div class="form-control cvc"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-12">
-                            <ol class="pl-3">
-                                <li>會員期間不限次數使用線上和解書服務</li>
-                                <li>會員期間享有30分鐘法律諮詢或文件撰寫</li>
-                            </ol>
-                            <button type="submit" class="button w-100" disabled>
-                                <h2 class="mb-0">開通服務</h2>
-                            </button>
+                        <div class="col-12 justify-self-end">
+                            <div class="row p-2">
+                                
+                                <div class="col-12">
+                                    <h6>付款金額</h6>
+                                    <h1 class="total-amount">NT$830<small>/年</small></h1>
+                                </div>
+                                <div class="col-12">
+                                    <ol class="pl-3">
+                                        <li>會員期間不限次數使用線上和解書服務</li>
+                                        <li>會員期間享有30分鐘法律諮詢或文件撰寫</li>
+                                    </ol>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="button w-100" disabled>
+                                        <h2 class="mb-0">確認付款</h2>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -333,7 +360,7 @@
                         <img src="./assets/bg_product_mockup.png" class="img-fluid mockup">
                     </div>
                     <div class="col-md-7">
-                        <h1 class="jumbo">PAMO線上和解書<br />確保車禍和解都能付諸實現</h1>
+                        <h1 class="jumbo">PAMO<br class="d-lg-none d-block" />線上和解書<br />確保車禍和解都能付諸實現</h1>
                         <h5 class="mb-5">誰賠誰、怎麼賠<br />只要點一點，就會幫您寫的清清楚楚</h5>
                         <button class="button btn-cta">
                             <h2 class="mb-0">開通服務</h2>
@@ -348,18 +375,22 @@
         <div class="container text-center">
             <div class="pt-5 pb-5">
                 <h1>誰該賠，就點誰</h1>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="who option a selected"></div>
-                        我方
-                    </div>
-                    <div class="col-4">
-                        <div class="who option b"></div>
-                        對方
-                    </div>
-                    <div class="col-4">
-                        <div class="who option c"></div>
-                        互不賠償
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="who option a selected"></div>
+                                我方
+                            </div>
+                            <div class="col-4">
+                                <div class="who option b"></div>
+                                對方
+                            </div>
+                            <div class="col-4">
+                                <div class="who option c"></div>
+                                互不賠償
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -368,34 +399,38 @@
     <div class="bg-dark text-white">
         <div class="container text-lg-left text-center">
             <div class="pt-5 pb-5">
-                <h1>該怎麼賠，就怎麼點</h1>
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-12 col-4">
-                                <div class="how option a selected">
-                                    <span class="text">只賠錢</span>
+                <h1>該怎麼賠，<br class="d-block d-lg-none"/>就怎麼點</h1>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12 col-4">
+                                        <div class="how option a selected">
+                                            <span class="text">只賠錢</span>
+                                        </div>
+                                        <span class="d-md-none d-block">只賠錢</span>
+                                    </div>
+                                    <div class="col-md-12 col-4">
+                                        <div class="how option b">
+                                            <span class="text">只修車</span>
+                                        </div>
+                                        <span class="d-md-none d-block">只修車</span>
+                                    </div>
+                                    <div class="col-md-12 col-4">
+                                        <div class="how option c">
+                                            <span class="text">修車 + 賠錢<br/>(營業損失)</span>
+                                        </div>
+                                        <span class="d-md-none d-block">修車 + 賠錢<br/>(營業損失)</span>
+                                    </div>
                                 </div>
-                                <span class="d-md-none d-block">只賠錢</span>
                             </div>
-                            <div class="col-md-12 col-4">
-                                <div class="how option b">
-                                    <span class="text">只修車</span>
-                                </div>
-                                <span class="d-md-none d-block">只修車</span>
-                            </div>
-                            <div class="col-md-12 col-4">
-                                <div class="how option c">
-                                    <span class="text">修車 + 賠錢<br/>(營業損失)</span>
-                                </div>
-                                <span class="d-md-none d-block">修車 + 賠錢<br/>(營業損失)</span>
+                            <div class="col option-display">
+                                <img src="./assets/bg_option_how_a.png" class="img-fluid a">
+                                <img src="./assets/bg_option_how_b.png" class="img-fluid b d-none">
+                                <img src="./assets/bg_option_how_c.png" class="img-fluid c d-none">
                             </div>
                         </div>
-                    </div>
-                    <div class="col option-display">
-                        <img src="./assets/bg_option_how_a.png" class="img-fluid a">
-                        <img src="./assets/bg_option_how_b.png" class="img-fluid b d-none">
-                        <img src="./assets/bg_option_how_c.png" class="img-fluid c d-none">
                     </div>
                 </div>
             </div>
@@ -450,7 +485,7 @@
     <div>
         <div class="container text-center">
             <div class="pt-5 pb-5">
-                <h1 class="mb-5">與我們合作的夥伴</h1>
+                <h1 class="mb-5">與我們<br class="d-lg-none d-block" />合作的夥伴</h1>
                 <div class="row">
                     <div class="col-lg-2 col-md-3 col-4">
                         <div class="partner">
@@ -524,7 +559,7 @@
     <hr/>
     <div>
         <div class="container pt-5 pb-5">
-            <h1 class="text-center">非PAMO不可的理由</h1>
+            <h1 class="text-center">非PAMO不可<br class="d-lg-none d-block" />的理由</h1>
             <div class="row align-items-center faq-item">
                 <div class="col-md-auto"><h1 class="jumbo text-md-left text-center">1</h1></div>
                 <div class="col">
@@ -538,114 +573,120 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="faq-content">
-                            <div class="table">
-                                <table class="w-100">
-                                    <tbody><tr>
-                                        <th>項目／比較</th>
-                                        <th>紙本和解書</th>
-                                        <th>PAMO線上和解書</th>
-                                    </tr>
-                                    <tr>
-                                        <td>售後服務</td>
-                                        <td>無</td>
-                                        <td>有</td>
-                                    </tr>
-                                    <tr>
-                                        <td>保存</td>
-                                        <td>自行保存</td>
-                                        <td>電磁紀錄</td>
-                                    </tr>
-                                    <tr>
-                                        <td>步驟</td>
-                                        <td>繁雜</td>
-                                        <td>簡單</td>
-                                    </tr>
-                                    <tr>
-                                        <td>時間</td>
-                                        <td>至少50分鐘</td>
-                                        <td>1分鐘內</td>
-                                    </tr>
-                                    <tr>
-                                        <td>地點</td>
-                                        <td>限制</td>
-                                        <td>不限位置</td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                            <h4>a. 售後服務</h4>
-                            <p>說好和解，對方還反悔賴皮！？我該怎麼辦？</p>
-                            <div class="table">
-                                <table class="w-100">
-                                   <tbody><tr>
-                                       <th>紙本和解書</th>
-                                        <th>PAMO線上和解書</th>
-                                   </tr>
-                                    <tr>
-                                        <td>求助無門</td>
-                                        <td>PAMO會委派合作律所幫您處理，費用由PAMO負擔。<br>包含「刑事偵查程序」及「民事第一審」</td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                            <h4>b. 保存方式</h4>
-                            <p>刑事及民事的告訴期間分別為半年及兩年，所以和解文件至少要保存兩年！</p>
-                            <div class="table">
-                                <table class="w-100">
-                                   <tbody><tr>
-                                       <th>紙本和解書</th>
-                                        <th>PAMO線上和解書</th>
-                                   </tr>
-                                    <tr>
-                                        <td>突然需要卻找不到</td>
-                                        <td>對方當下就會收到含有文件的簡訊，同時您的信箱、LINE也都會收到完成的和解書。當然PAMO雲端也會有備份。</td>
-                                    </tr>
-                                </tbody></table>
-                            </div>
-                            <h4>c. 時間＆步驟</h4>
-                            <p>PAMO知道大多數的你，都不會放和解書在車上</p>
-                            <div class="table">
-                                <table class="w-100">
-                                   <tbody><tr>
-                                      <th></th>
-                                       <th>紙本和解書</th>
-                                        <th>PAMO線上和解書</th>
-                                   </tr>
-                                    <tr>
-                                        <td>和解書製作步驟</td>
-                                        <td>
-                                            <ol>
-                                                <li>Google搜索</li>
-                                                <li>從各種範本中挑選一個看得懂的版本</li>
-                                                <li>移動到最近的便利商店列印</li>
-                                                <li>找筆手動填寫資料</li>
-                                                <li>再抄寫一遍，因為一式兩份</li>
-                                                <li>雙方簽名</li>
-                                                <li>完成</li>
-                                            </ol>
-                                        </td>
-                                        <td>
-                                           <ol>
-                                               <li>打開ＬＩＮＥ</li>
-                                               <li>事件紀錄</li>
-                                               <li>點選和解條件</li>
-                                               <li>身份驗證</li>
-                                               <li>輕鬆完成</li>
-                                           </ol>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>需要的時間</td>
-                                        <td>至少 50 分鐘</td>
-                                        <td>只要 1 分鐘</td>
-                                    </tr>
-                                    <tr>
-                                        <td>簽約地點限制</td>
-                                        <td>附近 7-11</td>
-                                        <td>隨時隨地</td>
-                                    </tr>
-                                </tbody></table>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-content">
+                                <div class="table">
+                                    <!-- <table class="w-100">
+                                        <tbody><tr>
+                                            <th>項目／比較</th>
+                                            <th>紙本和解書</th>
+                                            <th>PAMO線上和解書</th>
+                                        </tr>
+                                        <tr>
+                                            <td>售後服務</td>
+                                            <td>無</td>
+                                            <td>有</td>
+                                        </tr>
+                                        <tr>
+                                            <td>保存</td>
+                                            <td>自行保存</td>
+                                            <td>電磁紀錄</td>
+                                        </tr>
+                                        <tr>
+                                            <td>步驟</td>
+                                            <td>繁雜</td>
+                                            <td>簡單</td>
+                                        </tr>
+                                        <tr>
+                                            <td>時間</td>
+                                            <td>至少50分鐘</td>
+                                            <td>1分鐘內</td>
+                                        </tr>
+                                        <tr>
+                                            <td>地點</td>
+                                            <td>限制</td>
+                                            <td>不限位置</td>
+                                        </tr>
+                                    </tbody></table> -->
+                                    <img src="./assets/table-1.png" class="img-fluid">
+                                </div>
+                                <h4>a. 售後服務</h4>
+                                <p>說好和解，對方還反悔賴皮！？我該怎麼辦？</p>
+                                <div class="table">
+                                    <!-- <table class="w-100">
+                                       <tbody><tr>
+                                           <th>紙本和解書</th>
+                                            <th>PAMO線上和解書</th>
+                                       </tr>
+                                        <tr>
+                                            <td>求助無門</td>
+                                            <td>PAMO會委派合作律所幫您處理，費用由PAMO負擔。<br>包含「刑事偵查程序」及「民事第一審」</td>
+                                        </tr>
+                                    </tbody></table> -->
+                                    <img src="./assets/table-2.png" class="img-fluid">
+                                </div>
+                                <h4>b. 保存方式</h4>
+                                <p>刑事及民事的告訴期間分別為半年及兩年，所以和解文件至少要保存兩年！</p>
+                                <div class="table">
+                                    <!-- <table class="w-100">
+                                       <tbody><tr>
+                                           <th>紙本和解書</th>
+                                            <th>PAMO線上和解書</th>
+                                       </tr>
+                                        <tr>
+                                            <td>突然需要卻找不到</td>
+                                            <td>對方當下就會收到含有文件的簡訊，同時您的信箱、LINE也都會收到完成的和解書。當然PAMO雲端也會有備份。</td>
+                                        </tr>
+                                    </tbody></table> -->
+                                    <img src="./assets/table-3.png" class="img-fluid">
+                                </div>
+                                <h4>c. 時間＆步驟</h4>
+                                <p>PAMO知道大多數的你，都不會放和解書在車上</p>
+                                <div class="table">
+                                    <!-- <table class="w-100">
+                                       <tbody><tr>
+                                          <th></th>
+                                           <th>紙本和解書</th>
+                                            <th>PAMO線上和解書</th>
+                                       </tr>
+                                        <tr>
+                                            <td>和解書製作步驟</td>
+                                            <td>
+                                                <ol>
+                                                    <li>Google搜索</li>
+                                                    <li>從各種範本中挑選一個看得懂的版本</li>
+                                                    <li>移動到最近的便利商店列印</li>
+                                                    <li>找筆手動填寫資料</li>
+                                                    <li>再抄寫一遍，因為一式兩份</li>
+                                                    <li>雙方簽名</li>
+                                                    <li>完成</li>
+                                                </ol>
+                                            </td>
+                                            <td>
+                                               <ol>
+                                                   <li>打開ＬＩＮＥ</li>
+                                                   <li>事件紀錄</li>
+                                                   <li>點選和解條件</li>
+                                                   <li>身份驗證</li>
+                                                   <li>輕鬆完成</li>
+                                               </ol>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>需要的時間</td>
+                                            <td>至少 50 分鐘</td>
+                                            <td>只要 1 分鐘</td>
+                                        </tr>
+                                        <tr>
+                                            <td>簽約地點限制</td>
+                                            <td>附近 7-11</td>
+                                            <td>隨時隨地</td>
+                                        </tr>
+                                    </tbody></table> -->
+                                    <img src="./assets/table-4.png" class="img-fluid">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -665,10 +706,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="faq-content">
-                            <p>根據PAMO的後台統計，62％的車禍案件，其平均和解金額為2,200元。在這樣的金額下，出險所需付出的「時間成本」，包含筆錄、通知保險、理賠審核與撥款，與可能面臨的「保費調整」，都是使用者有保險仍選擇PAMO的原因。</p>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-content">
+                                <p>根據PAMO的後台統計，62％的車禍案件，其平均和解金額為2,200元。在這樣的金額下，出險所需付出的「時間成本」，包含筆錄、通知保險、理賠審核與撥款，與可能面臨的「保費調整」，都是使用者有保險仍選擇PAMO的原因。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -692,12 +735,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="faq-content">
-                            <p>PAMO線上和解書具有足夠的證據力，即使對方賴皮也可以成功防衛
-                                <br>證據力 ⭐️⭐️⭐️⭐️⭐️
-                                <br>防衛力 ⭐️⭐️⭐️⭐️⭐️</p>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-content">
+                                <p>PAMO線上和解書具有足夠的證據力，即使對方賴皮也可以成功防衛
+                                    <br>證據力 ⭐️⭐️⭐️⭐️⭐️
+                                    <br>防衛力 ⭐️⭐️⭐️⭐️⭐️</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -716,10 +761,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="faq-content">
-                            <p>PAMO線上和解書系統，是透過寄送「簡訊」的方式，將和解內容通知對方，一方面確認對方的手機號碼，一方面將讓對方也取得和解契約。因此，對方的手機只要可以收到簡訊，就可以使用PAMO的服務喔。</p>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-content">
+                                <p>PAMO線上和解書系統，是透過寄送「簡訊」的方式，將和解內容通知對方，一方面確認對方的手機號碼，一方面將讓對方也取得和解契約。因此，對方的手機只要可以收到簡訊，就可以使用PAMO的服務喔。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -738,11 +785,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="faq-content">
-                            <p>放心，遇到這種鳥事，你只需要一通電話，PAMO就會接手處理。<br>
-                                別忘了PAMO還有法律顧問與合作律所，遇到這種事，我們直接交給專家來處理看看是要用「偽造文書」還是「詐欺」等方式來處理。</p>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <div class="faq-content">
+                                <p>放心，遇到這種鳥事，你只需要一通電話，PAMO就會接手處理。<br>
+                                    別忘了PAMO還有法律顧問與合作律所，遇到這種事，我們直接交給專家來處理看看是要用「偽造文書」還是「詐欺」等方式來處理。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -799,7 +848,7 @@
             //Scroll to pay
             $(".btn-cta").click(function() {
                 $([document.documentElement, document.body]).animate({
-                scrollTop: $("#pay").offset().top
+                scrollTop: $("#pay").offset().top -100
                 }, 500);
             });
         });
