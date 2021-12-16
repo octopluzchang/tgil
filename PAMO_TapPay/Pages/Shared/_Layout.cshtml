@@ -34,7 +34,7 @@
         }
 
         .jumbo {
-            font-size: 3.5em;
+            font-size: 3.2em;
             background: -webkit-radial-gradient(circle, #d6bc83 0%, #886e19 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -157,6 +157,13 @@
             margin: 20px;
         }
 
+        @@media only screen and (max-width: 768px) {
+            .faq-content {
+                display: none;
+                padding: 10px;
+                margin: 10px 0px;
+            }
+        }
         .bg-dark {
             background-color: #393939;
         }
@@ -216,12 +223,8 @@
             font-size: 1em;
         }
 
-        label {
-            font-size: 0.9em;
-        }
-
         a {
-            color: black;
+            color: rgb(194, 166, 81);
         }
 
             a:hover {
@@ -233,8 +236,8 @@
             color: black;
         }
 
-        @@media only screen and (max-width: 568px) {
-            body {
+        @@media only screen and (max-width: 768px) {
+            table td {
                 font-size: 0.8em;
             }
         }
