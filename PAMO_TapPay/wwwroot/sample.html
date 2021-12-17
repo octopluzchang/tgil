@@ -206,7 +206,12 @@
         h6 {
             font-size: 1em;
         }
-
+        @media only screen and (max-width: 768px) {
+            label {
+                font-size: 1.5em;
+            }
+        }
+        
         a {
             color: rgb(194, 166, 81);
         }
@@ -304,7 +309,7 @@
                                             <input type="tel" class="form-control" id="PhoneNumber" required="required">
                                         </div>
                                         <div class="col-md">
-                                            <label for="PhoneNumber">再輸入一次手機號碼</label>
+                                            <label for="PhoneNumber">再次輸入手機</label>
                                             <input type="tel" class="form-control" id="ConfirmPhoneNumber" required="required">
                                         </div>
                                     </div>
@@ -361,7 +366,7 @@
                     </div>
                     <div class="col-md-7">
                         <h1 class="jumbo">PAMO<br class="d-lg-none d-block" />線上和解書<br />確保車禍和解都能付諸實現</h1>
-                        <h5 class="mb-5">誰賠誰、怎麼賠<br />只要點一點，就會幫您寫的清清楚楚</h5>
+                        <h3 class="mb-5">誰賠誰、怎麼賠<br />只要點一點，就會幫您寫的清清楚楚</h3>
                         <button class="button btn-cta">
                             <h2 class="mb-0">開通服務</h2>
                         </button>
@@ -380,15 +385,15 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="who option a selected"></div>
-                                我方
+                                <h3>我方</h3>
                             </div>
                             <div class="col-4">
                                 <div class="who option b"></div>
-                                對方
+                                <h3>對方</h3>
                             </div>
                             <div class="col-4">
                                 <div class="who option c"></div>
-                                互不賠償
+                                <h3>互不賠</h3>
                             </div>
                         </div>
                     </div>
@@ -407,21 +412,21 @@
                                 <div class="row">
                                     <div class="col-md-12 col-4">
                                         <div class="how option a selected">
-                                            <span class="text">只賠錢</span>
+                                            <span class="text">賠錢</span>
                                         </div>
-                                        <span class="d-md-none d-block">只賠錢</span>
+                                        <h3 class="d-md-none d-block">賠錢</h3>
                                     </div>
                                     <div class="col-md-12 col-4">
                                         <div class="how option b">
-                                            <span class="text">只修車</span>
+                                            <span class="text">修車</span>
                                         </div>
-                                        <span class="d-md-none d-block">只修車</span>
+                                        <h3 class="d-md-none d-block">修車</h3>
                                     </div>
                                     <div class="col-md-12 col-4">
                                         <div class="how option c">
-                                            <span class="text">修車 + 賠錢<br/>(營業損失)</span>
+                                            <span class="text">都要</span>
                                         </div>
-                                        <span class="d-md-none d-block">修車 + 賠錢<br/>(營業損失)</span>
+                                        <h3 class="d-md-none d-block">都要</h3>
                                     </div>
                                 </div>
                             </div>
