@@ -54,7 +54,7 @@ namespace PAMO_TapPay.Pages
                 var TapPayUrl = _config.GetValue<string>("TapPayInfo:TapPayUrl");
                 var PartnerKey = _config.GetValue<string>("TapPayInfo:PartnerKey");
                 var Merchant_id = _config.GetValue<string>("TapPayInfo:Merchant_id");
-                var PamoPrice = _config.GetValue<string>("PamoInfo:PamoPrice");
+                var PamoPrice = _config.GetValue<string>("PamoInfo:PamoPrice2");
                 var AccountSid = _config.GetValue<string>("TwilioInfo:Account_Sid");
                 var AuthToken = _config.GetValue<string>("TwilioInfo:Auth_Token");
                 var PhoneNoFrom = _config.GetValue<string>("TwilioInfo:PhoneNoFrom");

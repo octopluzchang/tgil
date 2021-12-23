@@ -40,9 +40,9 @@ namespace PAMO_TapPay.Biz
                 //將回應結果內容取出並轉為 string 再透過 linqpad 輸出
                 return response.Content.ReadAsStringAsync().GetAwaiter().GetResult().ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -63,9 +63,9 @@ namespace PAMO_TapPay.Biz
                 //將回應結果內容取出並轉為 string 再透過 linqpad 輸出
                 return response.Content.ReadAsStringAsync().GetAwaiter().GetResult().ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
