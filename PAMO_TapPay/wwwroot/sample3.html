@@ -1,0 +1,825 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        #header {
+            /* background-color: rgb(36, 36, 36); */
+        }
+
+        .tappay-field-focus {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+
+        .has-error .tappay-field-focus {
+            border-color: #843534;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+        }
+
+        .has-success .tappay-field-focus {
+            border-color: #2b542c;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+        }
+
+        .jumbo {
+            font-size: 3.2em;
+        }
+
+        .highlighted {
+            background: -webkit-radial-gradient(circle, #d6bc83 0%, #886e19 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        button {
+            background: -webkit-radial-gradient(circle, #d6bc83 0%, #886e19 100%);
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        button:disabled {
+            opacity: 0.3;
+        }
+        #why {
+            background-image: url(./assets/img_award_glow.png);
+            background-position: right bottom;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+        }
+        @media only screen and (max-width: 1200px) {
+            #why {
+            background-position: 140% bottom;
+            }
+        }
+        @media only screen and (max-width: 991px) {
+            #why {
+                padding-bottom: 60%;
+                background-position: center bottom;
+                background-size: 70% auto;
+            }
+        }
+        .mockup {
+            transform: scale(1.5) translateX(-10%);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .mockup {
+                transform: scale(1.2) translateX(-6%);
+            }
+        }
+        .option {
+            background-color: #f2f2f2;
+            background-blend-mode: luminosity;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+        .option.selected {
+            background-color: rgb(194, 166, 81);
+        }
+        .option.who {
+            margin-top: 10px;
+            padding-top: 100%;
+            width: 100%;
+            background-position: center;
+            background-size: 100%;
+        }
+        .option.who.a {
+            background-image: url(./assets/bg_compensator_0@2x.png);
+        }
+        .option.who.b {
+            background-image: url(./assets/bg_compensator_1@2x.png);
+        }
+        .option.who.c {
+            background-image: url(./assets/bg_compensator_2@2x.png);
+        }
+        .option.how {
+            margin-top: 10px;
+            padding: 15% 0;
+            width: 100%;
+            background-position: left;
+            background-size: auto 100%;
+            color: black;
+            font-size: 1.5em;
+            position: relative;
+        }
+        .option.how .text {
+            position: absolute;
+            display: block;
+            z-index: 1;
+            transform: translateY(-50%);
+            top: 50%;
+            left: 50%;
+        }
+        .option.how::after {
+            content: '';
+            background-color: inherit;
+            clip-path: polygon(61% 0, 100% 50%, 58% 100%, 0% 100%, 0 50%, 0% 0%);
+            position: absolute;
+            top: 0;
+            right: -12%;
+            width: 27%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .option.how.a {
+            background-image: url(./assets/bg_compensation_1@2x.png);
+        }
+        .option.how.b {
+            background-image: url(./assets/bg_compensation_2@2x.png);
+        }
+        .option.how.c {
+            background-image: url(./assets/bg_compensation_3@2x.png);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .option.how {
+                padding: 50%;
+                background-position: top center;
+                background-size: 100%;
+            }
+            .option.how .text {
+                display: none;
+            }
+            .option.how::after {
+                display: none;
+            }
+        }
+
+        .faq-content {
+            display: none;
+            border: 1px solid #d1d1d1;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .faq-content {
+                display: none;
+                padding: 10px;
+                margin: 10px 0px;
+            }
+        }
+        .bg-dark {
+            background-color: #393939;
+        }
+
+        .partner {
+            opacity: 0.7;
+        }
+
+        @font-face {
+            font-family: noto-serif-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
+
+        @font-face {
+            font-family: noto-san-bold;
+            src: url(./assets/fonts/NotoSansTC-Bold.otf);
+        }
+
+        @font-face {
+            font-family: noto-san-light;
+            src: url(./assets/fonts/NotoSansTC-Light.otf);
+        }
+
+        @font-face {
+            font-family: noto-san-medium;
+            src: url(./assets/fonts/NotoSansTC-Medium.otf);
+        }
+
+        body {
+            font-size: 1.1em;
+            font-family: noto-san-medium;
+            letter-spacing: 0.1em;
+            color: var(--dark-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: noto-san-bold;
+            line-height: 1.5em;
+        }
+
+        h1 {
+            font-size: 2.4em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.75em;
+        }
+
+        h4 {
+            font-size: 1.5em;
+        }
+
+        h6 {
+            font-size: 1em;
+        }
+        @media only screen and (max-width: 768px) {
+            label {
+                font-size: 1.5em;
+            }
+        }
+        
+        a {
+            color: rgb(194, 166, 81);
+        }
+
+            a:hover {
+                text-decoration: none;
+                color: grey;
+            }
+
+        .text-black {
+            color: black !important;
+        }
+        @media only screen and (max-width: 768px) {
+            table td {
+                font-size: 0.8em;
+            }
+        }
+        :root {
+            --travelpro-main-color: #8E2424;
+        }
+
+* {
+    background-repeat: no-repeat;
+}
+
+.travelpro-main-bg-color {
+  background-color: var(--travelpro-main-color);
+}
+
+#travelpro-header {
+  padding: 150px 0 150px;
+  background-image: url(./assets/travelpro-header-car.png), url(./assets/travelpro-header-bg.png);
+  background-position: 20% bottom, bottom;
+  background-size: 303px, 2000px;
+}
+
+.travelpro-img {
+    background-position: center;
+    background-size: 100%;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.travelpro-header-logo {
+  padding-top: 18%;
+  background-image: url(./assets/travelpro-header-logo.png);
+}
+
+.travelpro-incident-1 {
+  background-image: url(./assets/travelpro-incident-1.png);
+}
+
+.travelpro-incident-2 {
+  background-image: url(./assets/travelpro-incident-2.png);
+}
+
+.travelpro-incident-3 {
+  background-image: url(./assets/travelpro-incident-3.png);
+}
+
+.travelpro-incident-4 {
+  background-image: url(./assets/travelpro-incident-4.png);
+}
+
+#travelpro-incidents {
+  background-image: url(./assets/travelpro-incident-bg.png);
+  background-position: top center;
+  background-size: 1000px;
+  background-color: #000000;
+  padding: 50px 0 100px;
+}
+
+#travelpro-solution .title {
+  background-image: url(./assets/travelpro-solution-title.png);
+  background-size: 609px;
+  padding: 107px 0 52px;
+  background-position: center;
+}
+
+#travelpro-solution .small {
+  color: #3c0b0b;
+}
+
+#travelpro-footer {
+  background-color: #000000;
+  padding: 100px 0;
+}
+
+#travelpro-footer input {
+  padding: 10px 15px;
+}
+
+#travelpro-footer input::placeholder {
+  color: #c1c1c1;
+}
+
+#travelpro-footer h1 {
+  font-size: 70px;
+  white-space: nowrap;
+}
+
+.travelpro-footer-logo {
+  background-image: url(./assets/travelpro-footer-logo.png);
+  padding-top: 20%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.travelpro-footer-gogoout {
+  background-image: url(./assets/travelpro-footer-gogoout.png);
+  padding-top: 78%;
+}
+
+a.btn {
+    background-color: #9f7d3c;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+
+a.btn:hover {
+    background-color: #9f7d3c;
+    color: white;
+    transform: scale(1.05);
+}
+        
+    </style>
+</head>
+
+<body>
+    <div id="nav" class="pt-3 pb-3 position-fixed w-100" style="z-index: 999; background-color: #8E2424;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-md-3 col">
+                    <a href="https://www.pamolaw.com/"><img src="./assets/bg-plan-3-head-logo.png" class="img-fluid"></a>
+                </div>
+                <div class="col text-end">
+                    <a href="#travelpro-footer" class="btn main">馬上購買</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="travelpro-header" class="travelpro-main-bg-color">
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-sm-5 text-white">
+                        <div class="travelpro-img travelpro-header-logo mb-3"></div>
+                    </div>
+                     <div class="col-md-auto text-white text-center">
+                         <h6>PAMO 支援您旅行中遇到的法律問題</h6>
+                         <h2>讓您安心出遊 <span class="d-md-inline d-none">，</span><br class="d-md-none d-block"/>有法保</h2>
+                         <a href="#travelpro-footer" class="btn main"><h2 class="mb-0">馬上購買</h2></a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="travelpro-incidents">
+        <div class="wrapper">
+            <div class="container text-white text-center">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <h1 class="py-5">旅遊地雷，<br/>您中過幾個？</h1>
+                    </div>
+                </div>
+                <div class="row align-items-top">
+                    <div class="col-sm-3 col-6 text-center">
+                        <div class="travelpro-img travelpro-incident-1 pb-3"></div>
+                        <h4>逛街皮夾被摸走</h4>
+                    </div>
+                    <div class="col-sm-3 col-6 text-center">
+                        <div class="travelpro-img travelpro-incident-2 pb-3"></div>
+                        <h4>車行不退我押金</h4>
+                    </div>
+                    <div class="col-sm-3 col-6 text-center">
+                        <div class="travelpro-img travelpro-incident-3 pb-3"></div>
+                        <h4>食物中毒全家送急診</h4>
+                    </div>
+                    <div class="col-sm-3 col-6 text-center">
+                        <div class="travelpro-img travelpro-incident-4 pb-3"></div>
+                        <h4>租車出遊發生車禍</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section travelpro-main-bg-color" id="travelpro-solution">
+        <div class="wrapper">
+            <div class="container text-center">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h1 class="pt-5 text-white">別怕！我們當您的靠山！</h1>
+                        <h3 class="title">PAMO提供2小時免費法律服務</h3>
+                        <p class="text-white px-0 px-md-5">凡遇上車禍事故、食物中毒等意外，「PAMO旅行法保」提供2小時免費法律服務，讓您可以安心享受美好的假期，遇上意外有PAMO做您的靠山。</p>
+                        <p class="small">※注意事項<br/>
+                            PAMO將依實際情況，認定該意外事故是否符合租車方案保障範圍
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="travelpro-footer">
+        <div class="wrapper">
+            <form class="container text-white">
+                <div class="row justify-content-center text-center">
+                    <div class="col-md-6">
+                        <div class="travelpro-img travelpro-footer-logo"></div>
+                        <h1 class="text-white">馬上取得</h1>
+                        <h3>解決您旅行中遇到的法律問題</h3>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row justify-content-center align-items-top text-left">
+                    <div class="col-md-6 mb-md-0 mb-5">
+                        <h3>租車使用者資訊</h3>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="mb-2">真實姓名</div>
+                                <div>
+                                    <input class="w-100" type="text" placeholder="王小明"/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">聯絡手機</div>
+                                <div>
+                                    <input class="w-100" type="number" placeholder="09XXXXXXXX"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="mb-2">租出車行</div>
+                                <div>
+                                    <input class="w-100" type="text" placeholder="有間車行"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-2">起租日</div>
+                                <div>
+                                    <input class="w-100" type="date" id="datePicker"/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">租車天數</div>
+                                <input class="w-100" id="dayCounter" type="number" onchange="syncNumber()" value="1" min="0"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <h3>付款資訊</h3>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="mb-2">信用卡卡號</div>
+                                <div>
+                                    <input class="w-100" type="number" placeholder="XXXX XXXX XXXX XXXX"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col">
+                                <div class="mb-2">有效期限</div>
+                                <div>
+                                    <input class="w-100" type="number" placeholder="XXXX"/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">安全碼</div>
+                                <div>
+                                    <input class="w-100" type="number" placeholder="XXX"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-end">
+                            <div class="col">
+                                <div>旅行法保一天NT$49</div>
+                                <div>
+                                <span><h3 class="mb-0">x<span id='display'>1</span>天</h3></span>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <div>
+                                    <span>費用總計</span>
+                                    <span><h3 class="mb-0">NT$<span id="sumAmount">49</span></h3></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <p class="text-center">確認付款後，系統將會寄發確認簡訊，為維護您的權益，請確實填寫</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <a href="#" class="btn main w-100">
+                            <h3 class="mb-0">送出資料</h3>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bg-dark text-white">
+        <div class="container text-center">
+            <div class="row pt-5 pb-5 justify-content-center">
+                <div class="col-lg-3">
+                    <img src="./assets/bg_logo_main.png" class="img-fluid">
+                    <h5 class="text-white">略策法律事務所</h5>
+                    <p class="text-white">聯絡電話<br />02-5568-6412</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        const display = document.getElementById('display');
+        const sumAmount = document.getElementById('sumAmount');
+        function syncNumber() {
+            const number = display.innerText;
+            const newNumber = dayCounter.value;
+            display.innerText = parseInt(newNumber);
+            sumAmount.innerText = parseInt(newNumber*49);
+          }
+        
+          Date.prototype.toDateInputValue = (function() {
+            var local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0,10);
+            });
+        
+            document.getElementById('datePicker').value = new Date().toDateInputValue();
+        </script>
+    <script>
+        $(document).ready(function () {
+            $('.option').click(function () {
+                $(this).parents('.row').find('.option').removeClass('selected')
+                $(this).addClass('selected')
+            })
+            $('.option.how.a').click(function () {
+                $('.option-display img').addClass('d-none')
+                $('.option-display .a').removeClass('d-none')
+            })
+            $('.option.how.b').click(function () {
+                $('.option-display img').addClass('d-none')
+                $('.option-display .b').removeClass('d-none')
+            })
+            $('.option.how.c').click(function () {
+                $('.option-display img').addClass('d-none')
+                $('.option-display .c').removeClass('d-none')
+            })
+
+            $('.btn-faq').click(function () {
+                $('.faq-content').hide()
+                $(this).parents('.faq-item').find('.faq-content').toggle()
+            })
+            //Scroll to pay
+            $(".btn-cta").click(function () {
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#pay").offset().top - 100
+                }, 500);
+            });
+        });
+
+        TPDirect.setupSDK(@Model.AppID, '@Model.AppKey', '@Model.Env')
+        TPDirect.card.setup({
+            fields: {
+                number: {
+                    element: '.form-control.card-number',
+                    placeholder: '**** **** **** ****'
+                },
+                expirationDate: {
+                    element: document.getElementById('tappay-expiration-date'),
+                    placeholder: 'MM / YY'
+                },
+                ccv: {
+                    element: $('.form-control.cvc')[0],
+                    placeholder: '後三碼'
+                }
+            },
+            styles: {
+                'input': {
+                    'color': 'gray'
+                },
+                'input.ccv': {
+                    // 'font-size': '16px'
+                },
+                ':focus': {
+                    'color': 'black'
+                },
+                '.valid': {
+                    'color': 'green'
+                },
+                '.invalid': {
+                    'color': 'red'
+                }
+            }
+        })
+        // listen for TapPay Field
+        TPDirect.card.onUpdate(function (update) {
+            /* Disable / enable submit button depend on update.canGetPrime  */
+            /* ============================================================ */
+
+            // update.canGetPrime === true
+            //     --> you can call TPDirect.card.getPrime()
+            // const submitButton = document.querySelector('button[type="submit"]')
+            if (update.canGetPrime) {
+                // submitButton.removeAttribute('disabled')
+                $('button[type="submit"]').removeAttr('disabled')
+            } else {
+                // submitButton.setAttribute('disabled', true)
+                $('button[type="submit"]').attr('disabled', true)
+            }
+
+
+            /* Change card type display when card type change */
+            /* ============================================== */
+
+            // cardTypes = ['visa', 'mastercard', ...]
+            var newType = update.cardType === 'unknown' ? '' : update.cardType
+            $('#cardtype').text(newType)
+
+
+
+            /* Change form-group style when tappay field status change */
+            /* ======================================================= */
+
+            // number 欄位是錯誤的
+            if (update.status.number === 2) {
+                setNumberFormGroupToError('.card-number-group')
+            } else if (update.status.number === 0) {
+                setNumberFormGroupToSuccess('.card-number-group')
+            } else {
+                setNumberFormGroupToNormal('.card-number-group')
+            }
+
+            if (update.status.expiry === 2) {
+                setNumberFormGroupToError('.expiration-date-group')
+            } else if (update.status.expiry === 0) {
+                setNumberFormGroupToSuccess('.expiration-date-group')
+            } else {
+                setNumberFormGroupToNormal('.expiration-date-group')
+            }
+
+            if (update.status.cvc === 2) {
+                setNumberFormGroupToError('.cvc-group')
+            } else if (update.status.cvc === 0) {
+                setNumberFormGroupToSuccess('.cvc-group')
+            } else {
+                setNumberFormGroupToNormal('.cvc-group')
+            }
+        })
+
+        $('form').on('submit', function (event) {
+
+            var phoneNumber = $('#PhoneNumber').val()
+            var confirmPhoneNumber = $('#ConfirmPhoneNumber').val()
+            var email = $('#Email').val()
+            var firstName = $('#FirstName').val()
+            var lastName = $('#LastName').val()
+
+            event.preventDefault()
+
+            // fix keyboard issue in iOS device
+            forceBlurIos()
+
+            const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+            console.log(tappayStatus)
+
+            // Check Basic Info
+            if (isMobile(phoneNumber) === false) {
+                swal("請輸入正確的手機號碼!", "error phone format", "error", { button: "Cancel" });
+                return
+            }
+            if (confirmPhoneNumber !== phoneNumber) {
+                swal("兩次輸入手機號碼不相同，請重新確認。", "phone number is different", "error", { button: "Cancel" });
+                return
+            }
+
+            // Check TPDirect.card.getTappayFieldsStatus().canGetPrime before TPDirect.card.getPrime
+            if (tappayStatus.canGetPrime === false) {
+                swal("卡號授權取得異常", "can not get prime", "error", { button: "Cancel" });
+                return
+            }
+
+            // Get prime
+            TPDirect.card.getPrime(function (result) {
+                if (result.status !== 0) {
+                    swal("卡號授權狀態異常", "get prime error" + result.msg, "error", { button: "Cancel" });
+                    return
+                }
+
+                // Loading Lock
+                swal({
+                    title: "服務開通中，請稍待片刻",
+                    text: "Please wait while we activate your service.",
+                    icon: "./assets/loading.gif",
+                    buttons: false,
+                    closeOnClickOutside: false,
+                    timer: 10000,
+                });
+
+                var postData = {
+                    "Prime": result.card.prime,
+                    "FirstName": firstName,
+                    "LastName": lastName,
+                    "PhoneNumber": phoneNumber,
+                    "Email": email
+                };
+
+                $.ajax({
+                    method: "post",
+                    url: "Rentalcar?handler=SnedData",
+                    data: postData,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-TOKEN",
+                            $('input:hidden[name="__RequestVerificationToken"]').val());
+                    },
+                    error: function (xhr, status, err) {
+                        shutDownSwal;
+                        swal("網路發生異常，請聯絡客服人員。", err + " status:" + status, "error", { button: "Cancel" });
+                    }
+                }).done(function (res) {
+                    shutDownSwal;
+                    var obj = jQuery.parseJSON(res);
+                    if (obj.status === "0") {
+                        swal(obj.msg, "", "success", { button: "Cancel" });
+                    } else {
+                        swal(obj.msg, "status:" + obj.status, "error", { button: "Cancel" });
+                    }
+                    if (obj.status === "0" || obj.status === "-3") {
+                        $('.form-control').attr('disabled', true)
+                        $('button[type="submit"]').attr('disabled', true)
+                    }
+                });
+
+            })
+        })
+
+        function setNumberFormGroupToError(selector) {
+            $(selector).addClass('has-error')
+            $(selector).removeClass('has-success')
+        }
+
+        function setNumberFormGroupToSuccess(selector) {
+            $(selector).removeClass('has-error')
+            $(selector).addClass('has-success')
+        }
+
+        function setNumberFormGroupToNormal(selector) {
+            $(selector).removeClass('has-error')
+            $(selector).removeClass('has-success')
+        }
+
+        function forceBlurIos() {
+            if (!isIos()) {
+                return
+            }
+            var input = document.createElement('input')
+            input.setAttribute('type', 'text')
+            // Insert to active element to ensure scroll lands somewhere relevant
+            document.activeElement.prepend(input)
+            input.focus()
+            input.parentNode.removeChild(input)
+        }
+
+        function isIos() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        function isMobile(s) {
+            var reg = /^09[0-9]{8}$/;
+            return reg.test(s)
+        }
+
+        function shutDownSwal() {
+            $(".swal-overlay").removeClass("swal-overlay--show-modal");
+        }
+
+    </script>
+</body>
+
+</html>
