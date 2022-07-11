@@ -2,6 +2,18 @@ using System;
 
 namespace PAMO_TapPay
 {
+    public class TravelProReceiveModel
+    {
+        public string PersonName { get; set; }
+        public string CompanyName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Prime { get; set; }
+        public int Days { get; set; }
+        public DateTime StartDate { get; set; }
+
+    }
+
     public class TapPayReceiveModel
     {
         public string FirstName { get; set; }

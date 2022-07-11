@@ -48,6 +48,9 @@
 
   <ItemGroup>
     	 <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
+    	 <Content Update="Pages\TravelPro.cshtml">
+    	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    	 </Content>
     	 <Content Update="Pages\Rentalcar.cshtml">
     	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     	 </Content>

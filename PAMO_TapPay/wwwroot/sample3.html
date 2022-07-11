@@ -48,20 +48,23 @@
             white-space: nowrap;
         }
 
-        button:disabled {
-            opacity: 0.3;
-        }
+            button:disabled {
+                opacity: 0.3;
+            }
+
         #why {
             background-image: url(./assets/img_award_glow.png);
             background-position: right bottom;
             background-repeat: no-repeat;
             background-size: auto 100%;
         }
+
         @media only screen and (max-width: 1200px) {
             #why {
-            background-position: 140% bottom;
+                background-position: 140% bottom;
             }
         }
+
         @media only screen and (max-width: 991px) {
             #why {
                 padding-bottom: 60%;
@@ -69,6 +72,7 @@
                 background-size: 70% auto;
             }
         }
+
         .mockup {
             transform: scale(1.5) translateX(-10%);
         }
@@ -78,70 +82,81 @@
                 transform: scale(1.2) translateX(-6%);
             }
         }
+
         .option {
             background-color: #f2f2f2;
             background-blend-mode: luminosity;
             background-repeat: no-repeat;
             cursor: pointer;
         }
-        .option.selected {
-            background-color: rgb(194, 166, 81);
-        }
-        .option.who {
-            margin-top: 10px;
-            padding-top: 100%;
-            width: 100%;
-            background-position: center;
-            background-size: 100%;
-        }
-        .option.who.a {
-            background-image: url(./assets/bg_compensator_0@2x.png);
-        }
-        .option.who.b {
-            background-image: url(./assets/bg_compensator_1@2x.png);
-        }
-        .option.who.c {
-            background-image: url(./assets/bg_compensator_2@2x.png);
-        }
-        .option.how {
-            margin-top: 10px;
-            padding: 15% 0;
-            width: 100%;
-            background-position: left;
-            background-size: auto 100%;
-            color: black;
-            font-size: 1.5em;
-            position: relative;
-        }
-        .option.how .text {
-            position: absolute;
-            display: block;
-            z-index: 1;
-            transform: translateY(-50%);
-            top: 50%;
-            left: 50%;
-        }
-        .option.how::after {
-            content: '';
-            background-color: inherit;
-            clip-path: polygon(61% 0, 100% 50%, 58% 100%, 0% 100%, 0 50%, 0% 0%);
-            position: absolute;
-            top: 0;
-            right: -12%;
-            width: 27%;
-            height: 100%;
-            z-index: 0;
-        }
 
-        .option.how.a {
-            background-image: url(./assets/bg_compensation_1@2x.png);
-        }
-        .option.how.b {
-            background-image: url(./assets/bg_compensation_2@2x.png);
-        }
-        .option.how.c {
-            background-image: url(./assets/bg_compensation_3@2x.png);
-        }
+            .option.selected {
+                background-color: rgb(194, 166, 81);
+            }
+
+            .option.who {
+                margin-top: 10px;
+                padding-top: 100%;
+                width: 100%;
+                background-position: center;
+                background-size: 100%;
+            }
+
+                .option.who.a {
+                    background-image: url(./assets/bg_compensator_0@2x.png);
+                }
+
+                .option.who.b {
+                    background-image: url(./assets/bg_compensator_1@2x.png);
+                }
+
+                .option.who.c {
+                    background-image: url(./assets/bg_compensator_2@2x.png);
+                }
+
+            .option.how {
+                margin-top: 10px;
+                padding: 15% 0;
+                width: 100%;
+                background-position: left;
+                background-size: auto 100%;
+                color: black;
+                font-size: 1.5em;
+                position: relative;
+            }
+
+                .option.how .text {
+                    position: absolute;
+                    display: block;
+                    z-index: 1;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    left: 50%;
+                }
+
+                .option.how::after {
+                    content: '';
+                    background-color: inherit;
+                    clip-path: polygon(61% 0, 100% 50%, 58% 100%, 0% 100%, 0 50%, 0% 0%);
+                    position: absolute;
+                    top: 0;
+                    right: -12%;
+                    width: 27%;
+                    height: 100%;
+                    z-index: 0;
+                }
+
+                .option.how.a {
+                    background-image: url(./assets/bg_compensation_1@2x.png);
+                }
+
+                .option.how.b {
+                    background-image: url(./assets/bg_compensation_2@2x.png);
+                }
+
+                .option.how.c {
+                    background-image: url(./assets/bg_compensation_3@2x.png);
+                }
 
         @media only screen and (max-width: 768px) {
             .option.how {
@@ -149,12 +164,14 @@
                 background-position: top center;
                 background-size: 100%;
             }
-            .option.how .text {
-                display: none;
-            }
-            .option.how::after {
-                display: none;
-            }
+
+                .option.how .text {
+                    display: none;
+                }
+
+                .option.how::after {
+                    display: none;
+                }
         }
 
         .faq-content {
@@ -171,6 +188,7 @@
                 margin: 10px 0px;
             }
         }
+
         .bg-dark {
             background-color: #393939;
         }
@@ -230,12 +248,13 @@
         h6 {
             font-size: 1em;
         }
+
         @media only screen and (max-width: 768px) {
             label {
                 font-size: 1.5em;
             }
         }
-        
+
         a {
             color: rgb(194, 166, 81);
         }
@@ -248,121 +267,122 @@
         .text-black {
             color: black !important;
         }
+
         @media only screen and (max-width: 768px) {
             table td {
                 font-size: 0.8em;
             }
         }
+
         :root {
             --travelpro-main-color: #8E2424;
         }
 
-* {
-    background-repeat: no-repeat;
-}
+        * {
+            background-repeat: no-repeat;
+        }
 
-.travelpro-main-bg-color {
-  background-color: var(--travelpro-main-color);
-}
+        .travelpro-main-bg-color {
+            background-color: var(--travelpro-main-color);
+        }
 
-#travelpro-header {
-  padding: 150px 0 150px;
-  background-image: url(./assets/travelpro-header-car.png), url(./assets/travelpro-header-bg.png);
-  background-position: 20% bottom, bottom;
-  background-size: 303px, 2000px;
-}
+        #travelpro-header {
+            padding: 150px 0 150px;
+            background-image: url(./assets/travelpro-header-car.png), url(./assets/travelpro-header-bg.png);
+            background-position: 20% bottom, bottom;
+            background-size: 303px, 2000px;
+        }
 
-.travelpro-img {
-    background-position: center;
-    background-size: 100%;
-    width: 100%;
-    padding-top: 100%;
-}
+        .travelpro-img {
+            background-position: center;
+            background-size: 100%;
+            width: 100%;
+            padding-top: 100%;
+        }
 
-.travelpro-header-logo {
-  padding-top: 18%;
-  background-image: url(./assets/travelpro-header-logo.png);
-}
+        .travelpro-header-logo {
+            padding-top: 18%;
+            background-image: url(./assets/travelpro-header-logo.png);
+        }
 
-.travelpro-incident-1 {
-  background-image: url(./assets/travelpro-incident-1.png);
-}
+        .travelpro-incident-1 {
+            background-image: url(./assets/travelpro-incident-1.png);
+        }
 
-.travelpro-incident-2 {
-  background-image: url(./assets/travelpro-incident-2.png);
-}
+        .travelpro-incident-2 {
+            background-image: url(./assets/travelpro-incident-2.png);
+        }
 
-.travelpro-incident-3 {
-  background-image: url(./assets/travelpro-incident-3.png);
-}
+        .travelpro-incident-3 {
+            background-image: url(./assets/travelpro-incident-3.png);
+        }
 
-.travelpro-incident-4 {
-  background-image: url(./assets/travelpro-incident-4.png);
-}
+        .travelpro-incident-4 {
+            background-image: url(./assets/travelpro-incident-4.png);
+        }
 
-#travelpro-incidents {
-  background-image: url(./assets/travelpro-incident-bg.png);
-  background-position: top center;
-  background-size: 1000px;
-  background-color: #000000;
-  padding: 50px 0 100px;
-}
+        #travelpro-incidents {
+            background-image: url(./assets/travelpro-incident-bg.png);
+            background-position: top center;
+            background-size: 1000px;
+            background-color: #000000;
+            padding: 50px 0 100px;
+        }
 
-#travelpro-solution .title {
-  background-image: url(./assets/travelpro-solution-title.png);
-  background-size: 609px;
-  padding: 107px 0 52px;
-  background-position: center;
-}
+        #travelpro-solution .title {
+            background-image: url(./assets/travelpro-solution-title.png);
+            background-size: 609px;
+            padding: 107px 0 52px;
+            background-position: center;
+        }
 
-#travelpro-solution .small {
-  color: #3c0b0b;
-}
+        #travelpro-solution .small {
+            color: #3c0b0b;
+        }
 
-#travelpro-footer {
-  background-color: #000000;
-  padding: 100px 0;
-}
+        #travelpro-footer {
+            background-color: #000000;
+            padding: 100px 0;
+        }
 
-#travelpro-footer input {
-  padding: 10px 15px;
-}
+            #travelpro-footer input {
+                /*padding: 10px 15px;*/
+            }
 
-#travelpro-footer input::placeholder {
-  color: #c1c1c1;
-}
+                #travelpro-footer input::placeholder {
+                    /*color: #c1c1c1;*/
+                }
 
-#travelpro-footer h1 {
-  font-size: 70px;
-  white-space: nowrap;
-}
+            #travelpro-footer h1 {
+                font-size: 70px;
+                white-space: nowrap;
+            }
 
-.travelpro-footer-logo {
-  background-image: url(./assets/travelpro-footer-logo.png);
-  padding-top: 20%;
-  width: 50%;
-  margin: 0 auto;
-}
+        .travelpro-footer-logo {
+            background-image: url(./assets/travelpro-footer-logo.png);
+            padding-top: 20%;
+            width: 50%;
+            margin: 0 auto;
+        }
 
-.travelpro-footer-gogoout {
-  background-image: url(./assets/travelpro-footer-gogoout.png);
-  padding-top: 78%;
-}
+        .travelpro-footer-gogoout {
+            background-image: url(./assets/travelpro-footer-gogoout.png);
+            padding-top: 78%;
+        }
 
-a.btn {
-    background-color: #9f7d3c;
-    color: white;
-    border-radius: 50px;
-    padding: 10px 30px;
-    transition: 0.5s;
-}
+        a.btn {
+            background-color: #9f7d3c;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 30px;
+            transition: 0.5s;
+        }
 
-a.btn:hover {
-    background-color: #9f7d3c;
-    color: white;
-    transform: scale(1.05);
-}
-        
+            a.btn:hover {
+                background-color: #9f7d3c;
+                color: white;
+                transform: scale(1.05);
+            }
     </style>
 </head>
 
@@ -386,11 +406,11 @@ a.btn:hover {
                     <div class="col-sm-5 text-white">
                         <div class="travelpro-img travelpro-header-logo mb-3"></div>
                     </div>
-                     <div class="col-md-auto text-white text-center">
-                         <h6>PAMO 支援您旅行中遇到的法律問題</h6>
-                         <h2>讓您安心出遊 <span class="d-md-inline d-none">，</span><br class="d-md-none d-block"/>有法保</h2>
-                         <a href="#travelpro-footer" class="btn main"><h2 class="mb-0">馬上購買</h2></a>
-                     </div>
+                    <div class="col-md-auto text-white text-center">
+                        <h6>PAMO 支援您旅行中遇到的法律問題</h6>
+                        <h2>讓您安心出遊 <span class="d-md-inline d-none">，</span><br class="d-md-none d-block" />有法保</h2>
+                        <a href="#travelpro-footer" class="btn main"><h2 class="mb-0">馬上購買</h2></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -400,7 +420,7 @@ a.btn:hover {
             <div class="container text-white text-center">
                 <div class="row align-items-center">
                     <div class="col-12">
-                        <h1 class="py-5">旅遊地雷，<br/>您中過幾個？</h1>
+                        <h1 class="py-5">旅遊地雷，<br />您中過幾個？</h1>
                     </div>
                 </div>
                 <div class="row align-items-top">
@@ -432,7 +452,8 @@ a.btn:hover {
                         <h1 class="pt-5 text-white">別怕！我們當您的靠山！</h1>
                         <h3 class="title">PAMO提供2小時免費法律服務</h3>
                         <p class="text-white px-0 px-md-5">凡遇上車禍事故、食物中毒等意外，「PAMO旅行法保」提供2小時免費法律服務，讓您可以安心享受美好的假期，遇上意外有PAMO做您的靠山。</p>
-                        <p class="small">※注意事項<br/>
+                        <p class="small">
+                            ※注意事項<br />
                             PAMO將依實際情況，認定該意外事故是否符合租車方案保障範圍
                         </p>
                     </div>
@@ -450,7 +471,7 @@ a.btn:hover {
                         <h3>解決您旅行中遇到的法律問題</h3>
                     </div>
                 </div>
-                <hr/>
+                <hr />
                 <div class="row justify-content-center align-items-top text-left">
                     <div class="col-md-6 mb-md-0 mb-5">
                         <h3>租車使用者資訊</h3>
@@ -458,13 +479,13 @@ a.btn:hover {
                             <div class="col">
                                 <div class="mb-2">真實姓名</div>
                                 <div>
-                                    <input class="w-100" type="text" placeholder="王小明"/>
+                                    <input id="PersonName" class="form-control" type="text" placeholder="王小明" />
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-2">聯絡手機</div>
                                 <div>
-                                    <input class="w-100" type="number" placeholder="09XXXXXXXX"/>
+                                    <input id="PhoneNumber" class="form-control" type="tel" placeholder="09********" />
                                 </div>
                             </div>
                         </div>
@@ -472,7 +493,7 @@ a.btn:hover {
                             <div class="col">
                                 <div class="mb-2">租出車行</div>
                                 <div>
-                                    <input class="w-100" type="text" placeholder="有間車行"/>
+                                    <input id="CompanyName" class="form-control" type="text" placeholder="有間車行" />
                                 </div>
                             </div>
                         </div>
@@ -480,36 +501,32 @@ a.btn:hover {
                             <div class="col">
                                 <div class="mb-2">起租日</div>
                                 <div>
-                                    <input class="w-100" type="date" id="datePicker"/>
+                                    <input id="StartDate" class="form-control" type="date" />
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-2">租車天數</div>
-                                <input class="w-100" id="dayCounter" type="number" onchange="syncNumber()" value="1" min="0"/>
+                                <input class="form-control" id="DayCounter" type="number" onchange="syncNumber()" value="1" min="0" />
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                    <h3>付款資訊</h3>
+                        <h3>付款資訊</h3>
                         <div class="row mb-3">
                             <div class="col">
-                                <div class="mb-2">信用卡卡號</div>
-                                <div>
-                                    <input class="w-100" type="number" placeholder="XXXX XXXX XXXX XXXX"/>
-                                </div>
+                                <label for="card-number" class="control-label mb-2"><span id="cardtype"></span>信用卡卡號</label>
+                                <div class="form-control card-number"></div>
                             </div>
                         </div>
                         <div class="row mb-5">
                             <div class="col">
-                                <div class="mb-2">有效期限</div>
-                                <div>
-                                    <input class="w-100" type="number" placeholder="XXXX"/>
-                                </div>
+                                <label for="expiration-date" class="control-label mb-2">有效期限</label>
+                                <div class="form-control expiration-date" id="tappay-expiration-date"></div>
                             </div>
-                            <div class="col">
-                                <div class="mb-2">安全碼</div>
+                            <div class="col cvc-group">
+                                <label for="cvc" class="control-label mb-2">安全碼</label>
                                 <div>
-                                    <input class="w-100" type="number" placeholder="XXX"/>
+                                    <div class="form-control cvc"></div>
                                 </div>
                             </div>
                         </div>
@@ -517,10 +534,10 @@ a.btn:hover {
                             <div class="col">
                                 <div>旅行法保一天NT$49</div>
                                 <div>
-                                <span><h3 class="mb-0">x<span id='display'>1</span>天</h3></span>
+                                    <span><h3 class="mb-0">x<span id='display'>1</span>天</h3></span>
                                 </div>
                             </div>
-                            <div class="col text-right">
+                            <div class="col text">
                                 <div>
                                     <span>費用總計</span>
                                     <span><h3 class="mb-0">NT$<span id="sumAmount">49</span></h3></span>
@@ -529,13 +546,13 @@ a.btn:hover {
                         </div>
                     </div>
                 </div>
-                <hr/>
+                <hr />
                 <p class="text-center">確認付款後，系統將會寄發確認簡訊，為維護您的權益，請確實填寫</p>
                 <div class="row justify-content-center">
                     <div class="col-md-5">
-                        <a href="#" class="btn main w-100">
+                        <button type="submit" class="btn main w-100" disabled>
                             <h3 class="mb-0">送出資料</h3>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -555,24 +572,6 @@ a.btn:hover {
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        const display = document.getElementById('display');
-        const sumAmount = document.getElementById('sumAmount');
-        function syncNumber() {
-            const number = display.innerText;
-            const newNumber = dayCounter.value;
-            display.innerText = parseInt(newNumber);
-            sumAmount.innerText = parseInt(newNumber*49);
-          }
-        
-          Date.prototype.toDateInputValue = (function() {
-            var local = new Date(this);
-            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-            return local.toJSON().slice(0,10);
-            });
-        
-            document.getElementById('datePicker').value = new Date().toDateInputValue();
-        </script>
     <script>
         $(document).ready(function () {
             $('.option').click(function () {
@@ -602,6 +601,8 @@ a.btn:hover {
                     scrollTop: $("#pay").offset().top - 100
                 }, 500);
             });
+            //update Price
+            $('#sumAmount').text('@Model.Price');
         });
 
         TPDirect.setupSDK(@Model.AppID, '@Model.AppKey', '@Model.Env')
@@ -622,10 +623,12 @@ a.btn:hover {
             },
             styles: {
                 'input': {
+                    'font-size': '1.0em',
+                    'font-weight': 'bold',
                     'color': 'gray'
                 },
-                'input.ccv': {
-                    // 'font-size': '16px'
+                'input.expiration-date': {
+                    'font-weight': 'normal'
                 },
                 ':focus': {
                     'color': 'black'
@@ -694,12 +697,12 @@ a.btn:hover {
         })
 
         $('form').on('submit', function (event) {
-
+            var dayCounter = $('#DayCounter').val()
             var phoneNumber = $('#PhoneNumber').val()
-            var confirmPhoneNumber = $('#ConfirmPhoneNumber').val()
             var email = $('#Email').val()
-            var firstName = $('#FirstName').val()
-            var lastName = $('#LastName').val()
+            var personName = $('#PersonName').val()
+            var companyName = $('#CompanyName').val()
+            var startDate = $('#StartDate').val()
 
             event.preventDefault()
 
@@ -712,10 +715,6 @@ a.btn:hover {
             // Check Basic Info
             if (isMobile(phoneNumber) === false) {
                 swal("請輸入正確的手機號碼!", "error phone format", "error", { button: "Cancel" });
-                return
-            }
-            if (confirmPhoneNumber !== phoneNumber) {
-                swal("兩次輸入手機號碼不相同，請重新確認。", "phone number is different", "error", { button: "Cancel" });
                 return
             }
 
@@ -744,15 +743,17 @@ a.btn:hover {
 
                 var postData = {
                     "Prime": result.card.prime,
-                    "FirstName": firstName,
-                    "LastName": lastName,
+                    "Days": dayCounter,
+                    "PersonName": personName,
+                    "CompanyName": companyName,
                     "PhoneNumber": phoneNumber,
-                    "Email": email
+                    "Email": email,
+                    "StartDate": startDate
                 };
 
                 $.ajax({
                     method: "post",
-                    url: "Rentalcar?handler=SnedData",
+                    url: "TravelPro?handler=SnedData",
                     data: postData,
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader("X-CSRF-TOKEN",
@@ -778,6 +779,24 @@ a.btn:hover {
 
             })
         })
+
+        const display = document.getElementById('display');
+        const sumAmount = document.getElementById('sumAmount');
+        var price = parseInt('@Model.Price');
+        function syncNumber() {
+            const number = display.innerText;
+            const newNumber = DayCounter.value;
+            display.innerText = parseInt(newNumber);
+            sumAmount.innerText = parseInt(newNumber * price);
+        }
+
+        Date.prototype.toDateInputValue = (function () {
+            var local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0, 10);
+        });
+
+        document.getElementById('StartDate').value = new Date().toDateInputValue();
 
         function setNumberFormGroupToError(selector) {
             $(selector).addClass('has-error')
