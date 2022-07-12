@@ -485,7 +485,7 @@
                             <div class="col">
                                 <div class="mb-2">聯絡手機</div>
                                 <div>
-                                    <input id="PhoneNumber" class="form-control" type="tel" placeholder="09********" />
+                                    <input id="PhoneNumber" class="form-control" maxlength="10" type="tel" placeholder="09********" />
                                 </div>
                             </div>
                         </div>
@@ -501,7 +501,7 @@
                             <div class="col">
                                 <div class="mb-2">起租日</div>
                                 <div>
-                                    <input id="StartDate" class="form-control" type="date" />
+                                    <input id="StartDate" class="form-control" type="date" min="2022-07-12" />
                                 </div>
                             </div>
                             <div class="col">
@@ -623,7 +623,7 @@
             },
             styles: {
                 'input': {
-                    'font-size': '1.0em',
+                    //'font-size': '1.0em',
                     'font-weight': 'bold',
                     'color': 'gray'
                 },
