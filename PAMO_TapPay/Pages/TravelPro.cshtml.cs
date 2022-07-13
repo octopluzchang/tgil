@@ -72,7 +72,7 @@ namespace PAMO_TapPay.Pages
                 var ToEmail = _config.GetValue<string>("Gmail:ToEmail");
                 #endregion
 
-                #region
+                #region info
                 var sY = receiveModel.StartDate.Year - 1911;
                 var sM = receiveModel.StartDate.Month;
                 var sD = receiveModel.StartDate.Day;
