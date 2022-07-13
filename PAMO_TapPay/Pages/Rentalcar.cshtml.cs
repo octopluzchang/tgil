@@ -97,7 +97,7 @@ namespace PAMO_TapPay.Pages
                 TwilioClient.Init(AccountSid, AuthToken);
 
                 var message = MessageResource.Create(
-                    body: $"{fullName}您好，感謝您選擇PAMO。我們會盡快與您聯繫確認發票資訊。您也可以用LINE跟我們聯絡 https://lin.ee/zWVQXJU",
+                    body: $"{fullName}您好，感謝您選擇PAMO。我們會盡快與您聯繫確認發票資訊。您也可以用LINE跟我們聯絡。\n https://lin.ee/zWVQXJU",
                     from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
                     to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );

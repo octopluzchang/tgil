@@ -48,6 +48,7 @@ namespace PAMO_TapPay.Pages
             _logger.Trace("_Info:" + JsonConvert.SerializeObject(receiveModel));
 
             bool isPayAlready = false;
+            bool isSendSMS = false;
             string result;
 
             try
@@ -71,15 +72,26 @@ namespace PAMO_TapPay.Pages
                 var ToEmail = _config.GetValue<string>("Gmail:ToEmail");
                 #endregion
 
+                #region
+                var sY = receiveModel.StartDate.Year - 1911;
+                var sM = receiveModel.StartDate.Month;
+                var sD = receiveModel.StartDate.Day;
+                var eY = receiveModel.StartDate.AddDays(receiveModel.Days).Year - 1911;
+                var eM = receiveModel.StartDate.AddDays(receiveModel.Days).Month;
+                var eD = receiveModel.StartDate.AddDays(receiveModel.Days).Day;
+                var dateRange = $"{sY}年{sM}月{sD}日至{eY}年{eM}月{eD}日";
+                var totalAmount = int.Parse(PamoPrice) * receiveModel.Days;
+                #endregion
+
                 #region TapPayAPI
-               
+
                 var tapPaySendModel = new TapPaySnedModel
                 {
                     prime = receiveModel.Prime,
                     merchant_id = Merchant_id,
                     partner_key = PartnerKey,
-                    details = "PAMO的旅行法寶",
-                    amount = int.Parse(PamoPrice) * receiveModel.Days,
+                    details = $"PAMO旅行法保-{receiveModel.CompanyName},{dateRange}",
+                    amount = totalAmount,
                     remember = false,
                     cardholder = new Cardholder
                     {
@@ -106,13 +118,8 @@ namespace PAMO_TapPay.Pages
 
                 #region TwilioSMSAPI
                 TwilioClient.Init(AccountSid, AuthToken);
-                var sM = receiveModel.StartDate.Month;
-                var sD = receiveModel.StartDate.Day;
-                var eM = receiveModel.StartDate.AddDays(receiveModel.Days).Month;
-                var eD = receiveModel.StartDate.AddDays(receiveModel.Days).Day;
-                var dateRange = $"{sM}月{sD}日至{eM}月{eD}日";
                 var message = MessageResource.Create(
-                    body: $"{receiveModel.PersonName}您好，您已取得{dateRange}旅行法寶服務，請您點擊下方連結便於聯繫PAMO。",
+                    body: $"{receiveModel.PersonName}您好，您已取得{dateRange}旅行法保服務，請您點擊下方連結便於聯繫PAMO。\n https://lin.ee/SbFLz7Y",
                     from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
                     to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );
@@ -122,36 +129,40 @@ namespace PAMO_TapPay.Pages
                     _logger.Trace("_SMS_Error:" + JsonConvert.SerializeObject(message));
                     result = "{\"status\":\"-3\",\"msg\":\"簡訊寄送失敗，請聯絡客服人員。\"}";
                 }
+                else
+                    isSendSMS = true;
 
-                _logger.Trace("_Done:" + JsonConvert.SerializeObject(message));
-                result = "{\"status\":\"0\",\"msg\":\"付款成功！簡訊已寄出，請留意您手機訊息。\"}";
+
                 #endregion
 
                 #region Gmail
-                var email = new MailMessage();
-                email.From = new MailAddress(FromEmail, FromName, Encoding.UTF8);
-                email.To.Add(ToEmail);
-                email.Subject = $"PAMO的旅行法寶-{receiveModel.PersonName}";
-                email.Body = $"<h4>姓名:</h4><p>{receiveModel.PersonName}</p>" +
-                             $"<h4>聯絡手機:</h4><p>{receiveModel.PhoneNumber}</p>" +
-                             $"<h4>租車車行:</h4><p>{receiveModel.PersonName}</p>" +
-                             $"<h4>租車期間:</h4><p>{dateRange}</p>" +
-                             $"<h4>旅行法寶費用:</h4><p>{tapPaySendModel.amount}</p>";
-                email.IsBodyHtml = true;
-                var smtp = new SmtpClient();
-                smtp.Host = Host;
-                smtp.Port = int.Parse(Port); 
-                smtp.Credentials = new NetworkCredential(GmailId, GmailPassword);
-                smtp.EnableSsl = true; 
-                smtp.Send(email); 
-                smtp.Dispose();
+                //var email = new MailMessage();
+                //email.From = new MailAddress(FromEmail, FromName, Encoding.UTF8);
+                //email.To.Add(ToEmail);
+                //email.Subject = $"PAMO的旅行法保-{receiveModel.PersonName}";
+                //email.Body = $"<h4>姓名:</h4><p>{receiveModel.PersonName}</p>" +
+                //             $"<h4>聯絡手機:</h4><p>{receiveModel.PhoneNumber}</p>" +
+                //             $"<h4>租車車行:</h4><p>{receiveModel.CompanyName}</p>" +
+                //             $"<h4>租車期間:</h4><p>{dateRange}</p>" +
+                //             $"<h4>旅行法保費用:</h4><p>{totalAmount}</p>";
+                //email.IsBodyHtml = true;
+                //var smtp = new SmtpClient();
+                //smtp.Host = Host;
+                //smtp.Port = int.Parse(Port);
+                //smtp.Credentials = new NetworkCredential(GmailId, GmailPassword);
+                //smtp.EnableSsl = true;
+                //smtp.Send(email);
+                //smtp.Dispose();
                 #endregion
+
+                _logger.Trace("_Done:" + JsonConvert.SerializeObject(message));
+                result = "{\"status\":\"0\",\"msg\":\"付款成功！簡訊已寄出，請留意您手機訊息。\"}";
 
             }
             catch (Exception ex)
             {
                 _logger.Trace("_Catch:" + ex.ToString());
-                if (isPayAlready)
+                if (isPayAlready && !isSendSMS)
                 {   //status = -1 系統異常、-2 TapPay付款異常、-3 已付款成功，但簡訊寄送異常
                     return Content("{\"status\":\"-3\",\"msg\":\"簡訊系統異常，請聯絡客服人員。\"}");
                 }
