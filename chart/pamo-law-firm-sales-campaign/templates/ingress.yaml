@@ -36,7 +36,8 @@ spec:
       http:
         paths:
           {{- range .paths }}
-          - path: {{ . }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               {{- if semverCompare ">=1.19-0" $k8sVersion }}
               service:
