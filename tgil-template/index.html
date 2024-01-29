@@ -24,6 +24,7 @@
                     <a href="#s3" class="nav-item px-2">什麼是律師好神？</a>
                     <a href="#s7" class="nav-item px-2">使用者見證</a>
                     <a href="#faq" class="nav-item px-2">常見問答</a>
+                    <a href="https://office.pamolaw.com" target="_blank" class="nav-item px-2">略策法律事務所</a>
                     <span class="nav-item px-2">
                         <a href="#purchase" class="button">立即購買</a>
                     </span>
@@ -44,6 +45,7 @@
                 <a href="#s3" class="nav-item px-2 mb-3"><h1>什麼是律師好神？</h1></a>
                 <a href="#s7" class="nav-item px-2 mb-3"><h1>使用者見證</h1></a>
                 <a href="#faq" class="nav-item px-2 mb-3"><h1>常見問答</h1></a>
+                <a href="https://office.pamolaw.com" target="_blank" class="nav-item px-2 mb-3"><h1>略策法律事務所</h1></a>
                 <span class="nav-item px-2">
                 <a href="#purchase" class="button w-100"><h1>立即購買</h1></a>
                 </span>   
@@ -249,13 +251,13 @@
             <h1 class="mb-5">龍年首購！優惠滿滿!</h1>
             <div class="row mb-5">
                 <div class="col-lg-4 col-12">
-                    <a href="#purchase-form"><img src="assets/img_purchase_plan_1.png"/></a>
+                    <a href="#purchase-form" class="btn_plan" id="1888"><img src="assets/img_purchase_plan_1.png"/></a>
                 </div>
                 <div class="col-lg-4 col-6">
-                    <a href="#purchase-form"><img src="assets/img_purchase_plan_2.png"/></a>
+                    <a href="#purchase-form" class="btn_plan" id="3699"><img src="assets/img_purchase_plan_2.png"/></a>
                 </div>
                 <div class="col-lg-4 col-6">
-                    <a href="#purchase-form"><img src="assets/img_purchase_plan_3.png"/></a>
+                    <a href="#purchase-form" class="btn_plan" id="8888"><img src="assets/img_purchase_plan_3.png"/></a>
                 </div>
             </div>
             <div class="row justify-content-center mb-5">
@@ -294,15 +296,15 @@
                     <div class="row text-start justify-content-center">
                         <div class="col-lg-6 mb-3">
                             <div>購入方案</div>
-                            <select class="w-100">
-                                <option>律師好神一入組</option>
-                                <option>律師好神二入組</option>
-                                <option>律師好神五入組</option>
+                            <select id="plan_selector" class="w-100">
+                                <option value="1888">律師好神一入組</option>
+                                <option value="3699">律師好神二入組</option>
+                                <option value="8888">律師好神五入組</option>
                             </select>
                         </div>
                         <div class="col-lg-6 mb-3">
                             <div>購入組數</div>
-                            <select class="w-100">
+                            <select id="quantity_seletor" class="w-100">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -310,14 +312,17 @@
                                 <option>5</option>
                                 <option>6</option>
                                 <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
                             </select>
                         </div>
                     </div>
                     <hr/>
-                    <div class="row text-start justify-content-center">
+                    <div class="row text-start align-items-end justify-content-center">
                         <div class="col-lg-6">
-                            <p class="m-0">「律師好神」行車平安符 一入組x1</p>
-                            <h3>NT$1888</h3>
+                            <p class="m-0">總金額</p>
+                            <h3>NT$<span id="purchased-sum">1888</span></h3>
                         </div>
                         <div class="col-lg-6 text-end">
                             <a href="#" class="button w-100 disabled">確認並付款</a>
@@ -423,6 +428,24 @@
         $(".nav-bar").addClass("top");
     }
 }); //missing );
+
+//Count Purchased Sum
+    $('.btn_plan').click(function(){
+        var selectedValue = $(this).attr('id');
+        var selectedQuantity = $('#quantity_seletor').val();
+        $('#plan_selector').val(selectedValue);
+        $('#purchased-sum').html(selectedValue*selectedQuantity)
+    })
+    $('#plan_selector').on( "change", function() {
+        var selectedValue = $('#plan_selector').val();
+        var selectedQuantity = $('#quantity_seletor').val();
+        $('#purchased-sum').html(selectedValue*selectedQuantity)
+} );    
+    $('#quantity_seletor').on( "change", function() {
+        var selectedQuantity = $('#quantity_seletor').val();
+        var selectedValue = $('#plan_selector').val();
+        $('#purchased-sum').html(selectedValue*selectedQuantity)
+} );
 </script>
 
 </html>
