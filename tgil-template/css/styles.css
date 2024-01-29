@@ -1,6 +1,7 @@
 :root {
     --main-red: #B91616;
     --gold: #DEA46B;
+    --secondary-grey: rgb(122, 122, 122);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@900&family=Noto+Serif+TC:wght@400;700;900&display=swap');
@@ -22,7 +23,7 @@ img {
     position: fixed;
     background-color: var(--main-red);
     color: white;
-    z-index: 2;
+    z-index: 3;
     transition: 0.5s;
     opacity: 1;
 }
@@ -57,10 +58,11 @@ a.nav-item {
     top: 0%;
 }
 
-
-
 .text-white {
     color: white;
+}
+.text-grey {
+    color: var(--secondary-grey);
 }
 
 .bg-black {
@@ -97,13 +99,19 @@ a.nav-item {
 }
 
 #s1 {
-    height: 100vh;
+    min-height: 80vh;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    
+    background-image: url(../assets/bg_s1.png);
+    background-position: center;
+    background-size: 100%;
+}
+
+#s1 .container {
+    z-index: 2;
 }
 
 #bg-video {
@@ -111,7 +119,7 @@ a.nav-item {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    z-index: -1;
+    z-index: 1;
 }
 
 #s2 {
@@ -124,12 +132,6 @@ a.nav-item {
     background-position: center;
     background-size: 100%;
 }
-
-@media only screen and (max-width: 1200px) {
-    #s7 {
-        background-size: auto 100%;
-    }
-  }
 
 .purchase-form {
     border: 1px solid rgb(223, 223, 223);
@@ -153,3 +155,13 @@ a.nav-item {
 .comment .name {
     font-weight: bold;
 }
+
+@media only screen and (max-width: 1200px) {
+    #s1 {
+        min-height: 80vh;
+        background-size: auto 100%;
+    }
+    #s7 {
+        background-size: auto 100%;
+    }
+  }
