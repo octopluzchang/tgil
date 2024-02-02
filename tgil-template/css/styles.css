@@ -1,17 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@600;900&family=Noto+Serif+TC:wght@400;700;900&family=Yuji+Syuku&family=Potta+One&display=swap');
+
 :root {
     --main-red: #B91616;
     --gold: #DEA46B;
     --secondary-grey: rgb(122, 122, 122);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@900&family=Noto+Serif+TC:wght@400;700;900&display=swap');
-
-h1, h2, h3 {
-    font-family: 'Noto Serif TC Black', serif;
+body {
+    font-size: 17px;
 }
 
-body, p {
+h1 {
+    font-family: 'Yuji Syuku', serif;
+    font-size: 3em;
+    font-weight: 900;
+}
+
+h2, h3 {
     font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+}
+
+p {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: var(--secondary-grey);
 }
 
 
@@ -38,6 +52,8 @@ a.nav-item {
     text-decoration: none;
     font-weight: bold;
     text-shadow: 0 2px 2px black;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
 }
 
 #mobile-menu {
@@ -85,8 +101,14 @@ a.nav-item {
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    font-family: 'Noto Serif TC Black', serif;
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 900;
     box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.312);
+}
+
+.button h1, .button h2, .button h3 {
+    font-family: 'Noto Serif TC', serif !important;
+    font-weight: 900;
 }
 
 .button.disabled {
@@ -96,6 +118,8 @@ a.nav-item {
 
 .jumbo {
     font-size: 3em;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
 }
 
 #s1 {
@@ -155,6 +179,11 @@ a.nav-item {
 .comment .name {
     font-weight: bold;
 }
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+  }
 
 @media only screen and (max-width: 1200px) {
     #s1 {
@@ -165,3 +194,6 @@ a.nav-item {
         background-size: auto 100%;
     }
   }
+
+  
+  
