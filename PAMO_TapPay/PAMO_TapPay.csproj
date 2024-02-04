@@ -35,10 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Pages\sample.html" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="ChilkatDnCore" Version="9.5.0.88" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NLog" Version="4.7.12" />
@@ -48,12 +44,6 @@
 
   <ItemGroup>
     	 <Content Update="nlog.config" CopyToOutputDirectory="PreserveNewest" />
-    	 <Content Update="Pages\TravelPro.cshtml">
-    	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    	 </Content>
-    	 <Content Update="Pages\Rentalcar.cshtml">
-    	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    	 </Content>
     	 <Content Update="Pages\Index.cshtml">
     	   <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     	 </Content>

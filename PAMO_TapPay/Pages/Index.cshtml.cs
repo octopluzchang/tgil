@@ -40,7 +40,7 @@ namespace PAMO_TapPay.Pages
         }
 
 
-        public IActionResult OnPostSnedData(TapPayReceiveModel receiveModel)
+        public IActionResult OnPostSnedData(TravelProReceiveModel receiveModel)
         {
             _logger.Trace("_Info:" + JsonConvert.SerializeObject(receiveModel));
 
@@ -67,22 +67,21 @@ namespace PAMO_TapPay.Pages
                 #endregion
 
                 #region TapPayAPI
-                var fullName = IsChinese(receiveModel.LastName) ? $"{ receiveModel.LastName }{ receiveModel.FirstName }" : $"{ receiveModel.FirstName } { receiveModel.LastName }";
                 TapPaySnedModel tapPaySendModel = new TapPaySnedModel
                 {
                     prime = receiveModel.Prime,
                     merchant_id = Merchant_id,
                     partner_key = PartnerKey,
-                    details = "PAMO安心方案",
-                    amount = int.Parse(PamoPrice),
+                    details = $"行車平安符-{receiveModel.Plan}方案，一共購買{receiveModel.Groups}組",
+                    amount = receiveModel.Price,
                     remember = false,
                     cardholder = new Cardholder
                     {
                         phone_number = receiveModel.PhoneNumber,
-                        name = fullName,
-                        email = receiveModel.Email ?? "",
+                        name = receiveModel.PersonName,
+                        email = "",
                         zip_code = "",
-                        address = "",
+                        address = receiveModel.Address,
                         national_id = ""
                     }
                 };  
@@ -100,47 +99,47 @@ namespace PAMO_TapPay.Pages
                 #endregion
 
                 #region PamoAuth
-                //  Use Chilkat.Jwt
-                Chilkat.Jwt jwt = new Chilkat.Jwt();
-                //  Build the JOSE header
-                Chilkat.JsonObject jose = new Chilkat.JsonObject();
-                //  Use HS256.  Pass the string "HS384" or "HS512" to use a different algorithm.
-                jose.AppendString("alg", "HS256");
-                jose.AppendString("typ", "JWT");
-                //  Now build the JWT claims (also known as the payload)
-                Chilkat.JsonObject claims = new Chilkat.JsonObject();
-                claims.AppendString("iss", PamoIss);
-                claims.AppendString("sub", PamoSub);
-                var userDataJsonObject = claims.AppendObject("user_data");
-                userDataJsonObject.AppendString("last_name", receiveModel.LastName);
-                userDataJsonObject.AppendString("first_name", receiveModel.FirstName);
-                userDataJsonObject.AppendString("plate_number", "");
-                userDataJsonObject.AppendString("national_id", "");
-                userDataJsonObject.AppendString("phone_number", receiveModel.PhoneNumber);
-                userDataJsonObject.AppendString("birth", "");
-                userDataJsonObject.AppendString("email", receiveModel.Email ?? "");
+                ////  Use Chilkat.Jwt
+                //Chilkat.Jwt jwt = new Chilkat.Jwt();
+                ////  Build the JOSE header
+                //Chilkat.JsonObject jose = new Chilkat.JsonObject();
+                ////  Use HS256.  Pass the string "HS384" or "HS512" to use a different algorithm.
+                //jose.AppendString("alg", "HS256");
+                //jose.AppendString("typ", "JWT");
+                ////  Now build the JWT claims (also known as the payload)
+                //Chilkat.JsonObject claims = new Chilkat.JsonObject();
+                //claims.AppendString("iss", PamoIss);
+                //claims.AppendString("sub", PamoSub);
+                //var userDataJsonObject = claims.AppendObject("user_data");
+                //userDataJsonObject.AppendString("last_name", receiveModel.PersonName);
+                //userDataJsonObject.AppendString("first_name", receiveModel.PersonName);
+                //userDataJsonObject.AppendString("plate_number", "");
+                //userDataJsonObject.AppendString("national_id", "");
+                //userDataJsonObject.AppendString("phone_number", receiveModel.PhoneNumber);
+                //userDataJsonObject.AppendString("birth", "");
+                //userDataJsonObject.AppendString("email", receiveModel.Address ?? "");
 
-                jwt.AutoCompact = true;
-                string strJwt = jwt.CreateJwt(jose.Emit(), claims.Emit(), PamoSecret);
+                //jwt.AutoCompact = true;
+                //string strJwt = jwt.CreateJwt(jose.Emit(), claims.Emit(), PamoSecret);
                 #endregion
 
                 #region Make Short Url
-                var longUrl = $"{ PamoUrl }?auth={ strJwt }";
-                var bitlydata = $"?access_token={ BitlyApiKey }&longUrl={HttpUtility.UrlEncode(longUrl)}";
-                var bitlyResponse = Clinet.Get(BitlyUrl, "", bitlydata);
-                var bitlyResponseJObject = JObject.Parse(bitlyResponse);
-                int statusCode = bitlyResponseJObject["status_code"].Value<int>();
-                string tempPamoUrl = longUrl;
-                if (statusCode == (int)HttpStatusCode.OK)
-                    tempPamoUrl = bitlyResponseJObject["data"]["url"].Value<string>();
+                //var longUrl = $"{ PamoUrl }?auth={ strJwt }";
+                //var bitlydata = $"?access_token={ BitlyApiKey }&longUrl={HttpUtility.UrlEncode(longUrl)}";
+                //var bitlyResponse = Clinet.Get(BitlyUrl, "", bitlydata);
+                //var bitlyResponseJObject = JObject.Parse(bitlyResponse);
+                //int statusCode = bitlyResponseJObject["status_code"].Value<int>();
+                //string tempPamoUrl = longUrl;
+                //if (statusCode == (int)HttpStatusCode.OK)
+                //    tempPamoUrl = bitlyResponseJObject["data"]["url"].Value<string>();
                 #endregion
 
                 #region TwilioSMSAPI
                 TwilioClient.Init(AccountSid, AuthToken);
 
                 var message = MessageResource.Create(
-                    body: $"{fullName}您好，點擊網址完成註冊後即可使用PAMO安心方案的法律科技服務。\n{tempPamoUrl}",
-                    from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
+					body: $"{receiveModel.PersonName}，謝謝您選擇PAMO行車平安符，我們收到您的訂單了。您可以隨時透過PAMO的網站與我們聯絡。",
+					from: new Twilio.Types.PhoneNumber(PhoneNoFrom),
                     to: new Twilio.Types.PhoneNumber($"+886{receiveModel.PhoneNumber.Remove(0, 1)}")
                 );
 
