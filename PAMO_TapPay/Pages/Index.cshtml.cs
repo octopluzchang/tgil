@@ -72,7 +72,7 @@ namespace PAMO_TapPay.Pages
                     prime = receiveModel.Prime,
                     merchant_id = Merchant_id,
                     partner_key = PartnerKey,
-                    details = $"{receiveModel.Plan}方案x{receiveModel.Groups}\\{receiveModel.Address}",
+                    details = $"{receiveModel.Plan}方案x{receiveModel.Groups}/{receiveModel.Address}",
                     amount = receiveModel.Price,
                     remember = false,
                     cardholder = new Cardholder
