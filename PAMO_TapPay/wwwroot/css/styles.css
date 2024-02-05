@@ -108,8 +108,7 @@ a.nav-item {
 }
 
 .button {
-    background-color: var(--gold);
-    color: black;
+    color: white;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -118,10 +117,12 @@ a.nav-item {
     font-family: 'Noto Serif TC', serif !important;
     font-weight: 900;
     box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.312);
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 }
 
 .button.secondary {
-    background-color: black;
+    background: black;
     color: white;
 }
 
