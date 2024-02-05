@@ -35,15 +35,29 @@ img {
 
 .nav-bar {
     position: fixed;
-    background-color: var(--main-red);
+    background-color: black;
     color: white;
     z-index: 3;
     transition: 0.5s;
     opacity: 1;
 }
 
-.nav-bar.top {
+.bottom-bar {
+    position: fixed;
+    background-color: transparent;
+    color: white;
+    z-index: 3;
+    transition: 0.5s;
+    opacity: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     opacity: 0;
+}
+
+.nav-bar.show, .bottom-bar.show {
+    opacity: 1;
+    background-color: var(--main-red);
 }
 
 
@@ -62,16 +76,16 @@ a.nav-item {
     width: 100%;
     height: 100%;
     left: 0;
-    top: -100%;
+    bottom: -100%;
     background-color: var(--main-red);
     transition: 0.5s;
     background-image: url(../assets/bg_s3_center.png);
-    background-position: bottom;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 #mobile-menu.show {
-    top: 0%;
+    bottom: 0%;
 }
 
 .text-white {
@@ -106,6 +120,11 @@ a.nav-item {
     box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.312);
 }
 
+.button.secondary {
+    background-color: black;
+    color: white;
+}
+
 .button h1, .button h2, .button h3 {
     font-family: 'Noto Serif TC', serif !important;
     font-weight: 900;
@@ -130,20 +149,17 @@ a.nav-item {
     justify-content: center;
     position: relative;
     background-image: url(../assets/bg_s1.png);
-    background-position: center;
-    background-size: 100%;
+    background-position: left;
+    background-size: auto 100%;
+    padding: 6em 0;
 }
 
 #s1 .container {
     z-index: 2;
 }
 
-#bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 1;
+#bg-video video {
+    width: 100%;
 }
 
 #s2 {
@@ -154,7 +170,7 @@ a.nav-item {
     background-image: url(../assets/bg_comments.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: auto 100%;
 }
 
 .purchase-form {
@@ -168,32 +184,89 @@ a.nav-item {
 
 .comment {
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     color: black;
+    font-weight: bold;
     text-align: left;
     margin-bottom: 20px;
-    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.4);
-    min-height: 112px;
+    box-shadow: 0 3px 6px 5px rgba(0, 0, 0, 0.4);
+    font-size: 1.5em;
+    height: 150px;
+    width: 300px;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.comment::after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 30%, rgba(0,0,0,0) 100%);
+    z-index: 1;
 }
 
 .comment .name {
     font-weight: bold;
 }
-@media only screen and (max-width: 768px) {
-    body {
-        font-size: 15px;
-    }
-  }
 
-@media only screen and (max-width: 1200px) {
+.marquee-1, .marquee-2, .marquee-3 {
+    overflow: hidden;
+    position: relative;
+}
+
+.footer {
+    padding: 50px 0;
+}
+
+  @media only screen and (min-width: 1618px) {
     #s1 {
         min-height: 80vh;
-        background-size: auto 100%;
+        background-size: 100%;
     }
     #s7 {
         background-size: auto 100%;
     }
   }
 
+  @media only screen and (max-width: 1200px) {
+    #s1 {
+        min-height: 80vh;
+        background-size: auto 100%;
+        background-position: 40%;
+    }
+    #s7 {
+        background-size: auto 100%;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    #s1 {
+        background-position: 57%;
+    }
+    .footer {
+        padding-bottom: 100px;
+    }
+    
+  }
+
+  @media only screen and (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    #s1 {
+        background-position: 48%;
+    }
+    
+  }
+
+  @media only screen and (max-width: 575px) {
+    #s1 {
+        background-position: 40%;
+    }
+    
+  }
   
   
