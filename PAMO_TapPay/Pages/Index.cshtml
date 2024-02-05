@@ -5,7 +5,7 @@
 }
 
 <body>
-	<div class="nav-bar w-100 top">
+	<div class="nav-bar w-100 d-none d-lg-block">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col">
@@ -15,55 +15,60 @@
 					<a href="#s3" class="nav-item px-2">什麼是律師好神？</a>
 					<a href="#s7" class="nav-item px-2">使用者見證</a>
 					<a href="#faq" class="nav-item px-2">常見問答</a>
-					<a href="https://office.pamolaw.com" target="_blank" class="nav-item px-2">略策法律事務所</a>
+					<a href="https://office.pamolaw.com/traffics" target="_blank" class="nav-item px-2">略策法律事務所</a>
 					<span class="nav-item px-2">
 						<a href="#purchase" class="button">立即購買</a>
 					</span>
 				</div>
-				<div class="col-auto text-end d-lg-none d-block">
-					<a href="#purchase" class="button">立即購買</a>
-					<img id="btn_menu" src="assets/ic_menu.png" />
-				</div>
 			</div>
+		</div>
+	</div>
+	<div class="bottom-bar d-lg-none d-block">
+		<div class="row">
+			<div class="col-8 p-0"><a href="#purchase" class="button w-100 py-3"><h3 class="m-0">立即購買</h3></a></div>
+			<div class="col p-0"><a href="#purchase" class="button secondary w-100 py-3" id="btn_menu"><h3 class="m-0">主選單</h3></a></div>
 		</div>
 	</div>
 	<div id="mobile-menu">
-		<div class="container text-center">
-			<a href="#" class="nav-item">
-				<img class="mb-3" src="assets/img_comments_logo.png" />
-			</a>
-			<div class="row">
-				<a href="#s3" class="nav-item px-2 mb-3"><h1>什麼是律師好神？</h1></a>
-				<a href="#s7" class="nav-item px-2 mb-3"><h1>使用者見證</h1></a>
-				<a href="#faq" class="nav-item px-2 mb-3"><h1>常見問答</h1></a>
-				<a href="https://office.pamolaw.com" target="_blank" class="nav-item px-2 mb-3"><h1>略策法律事務所</h1></a>
-				<span class="nav-item px-2">
-					<a href="#purchase" class="button w-100"><h1>立即購買</h1></a>
-				</span>
+		<div class="container h-100 text-center">
+			<div class="row h-100 justify-content-between" style="flex-direction: column;">
+				<div class="col">
+					<a href="#" class="nav-item">
+						<img class="mb-3" src="assets/img_comments_logo.png" />
+					</a>
+				</div>
+				<div class="col-auto">
+					<div class="row">
+						<a href="https://office.pamolaw.com/traffics" target="_blank" class="nav-item px-2 mb-3">略策法律事務所</a>
+						<a href="#s3" class="nav-item px-2 mb-3"><h2>什麼是律師好神？</h2></a>
+						<a href="#s7" class="nav-item px-2 mb-3"><h2>使用者見證</h2></a>
+						<a href="#s5" class="nav-item px-2 mb-3"><h2>什麼是車禍線上律師</h2></a>
+						<a href="#faq" class="nav-item px-2 mb-3"><h2>常見問答</h2></a>
+						<a href="#" class="nav-item button secondary w-100 py-3"><h3 class="m-0">關閉選單</h3></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="section py-5" id="s1">
+	<div class="section" id="s1">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-4 text-center">
-					<img src="assets/img_landing_logos.png">
-				</div>
-				<div class="row justify-content-center">
-					<div class="col-auto p-0"><img src="assets/img_landing_main_left.png" /></div>
-					<div class="col-auto p-0"><img src="assets/img_landing_main_right.png" /></div>
-				</div>
+				<div class="col-6"></div>
 				<div class="col-lg-6 text-center">
-					<img src="assets/img_landing_subtitles.png">
+					<img src="assets/img_landing_logos.png" />
+					<h3>首款結合律師服務的平安符</h3>
+					<div class="col-sm-auto p-0 d-none d-sm-block">
+						<img src="assets/img_landing_main.png" />
+					</div>
+					<div class="col-auto d-sm-none d-block">
+						<img src="assets/img_landing_main_m.png" />
+					</div>
+					<h1>行車平安符</h1>
+					<img class="mb-5" src="assets/img_landing_price.png" />
+					<div class="w-100"></div>
+					<a href="#purchase" class="button w-50"><h3 class="m-0">立即購買</h3></a>
 				</div>
-				<div class="w-100"></div>
-				<div class="col-lg-3"> <a href="#purchase" class="button w-100"><h3 class="m-0">立即購買</h3></a></div>
 			</div>
-		</div>
-		<div id="bg-video">
-			<video autoplay muted playsinline loop>
-				<source src="assets/video_landing_bg.mp4" type="video/mp4">
-			</video>
 		</div>
 	</div>
 	<div class="section" id="s2">
@@ -72,9 +77,9 @@
 				<div class="col-12 text-white text-center">
 					<h2>
 						根據交通部統計，<br />
-						每天車禍超過1000件
+						每天車禍至少1000件
 					</h2>
-					<p class="text-grey">50%車險可以處理</p>
+					<p class="text-grey">車險只能處理不到一半的車禍...</p>
 					<h1>
 						<span class="jumbo">50</span><span>%</span>
 						<div>需要法律支援</div>
@@ -110,18 +115,18 @@
 					<h3>對方搞消失</h3>
 				</div>
 			</div>
-			<div class="text-center"><a href="https://youtu.be/9QsuPzHqzCQ?si=LxFt30WMX9O7Ht3o" data-fancybox data-width="620" data-height="1080" class="button w-50">看看大家後續怎麼辦？</a></div>
+			<div class="text-center"><a href="https://youtu.be/9QsuPzHqzCQ?si=LxFt30WMX9O7Ht3o" data-fancybox data-width="620" data-height="1080" class="button w-75">發生車禍，後續到底該怎麼辦？</a></div>
 		</div>
 
 	</div>
 	<div class="section bg-black text-white" id="s3">
 		<div class="container">
-			<h1 class="text-center mb-lg-0 mb-5">
+			<h1 class="text-center mb-lg-0 mb-5" style="z-index: 2; position: relative;;">
 				不只是護身符<br />
-				更是每個人都能使用的律師服務
+				更是每個人都能使用的<br />律師服務
 			</h1>
 			<div class="row align-items-center">
-				<img class="d-none d-md-block" src="assets/img_s3_desktop.png" />
+				<img class="d-none d-md-block" style="margin-top: -150px; z-index: 1;" src="assets/img_s3_desktop.png" />
 				<img class="d-md-none d-block" src="assets/img_s3_mobile.png" />
 			</div>
 		</div>
@@ -144,6 +149,20 @@
 				</div>
 				<div class="col-lg-6">
 					<img src="assets/img_scenarios_back.png"></img>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section bg-red text-white">
+		<div class="container text-center">
+			<h1 class="mb-5">大甲鎮瀾宮過爐儀式</h1>
+			<div class="row">
+				<div class="col">
+					<div id="bg-video">
+						<video autoplay muted playsinline loop>
+							<source src="assets/video_landing_bg.mp4" type="video/mp4">
+						</video>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -187,51 +206,276 @@
 		<div class="container text-center">
 			<img src="assets/img_comments_logo.png" />
 			<h1 class="text-center mb-5">預購大熱賣！好評追貨中！</h1>
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="comment">
-						<div class="name">陳X姐 / 台北</div>
-						<div class="conent">掛在車上超喜氣的！有如神靈護體的安心感</div>
+		</div>
+		<div class="marquee-1">
+			<div class="d-flex">
+				<div class="comment">
+					<div class="conent">持續支持與推廣</div>
+				</div>
+				<div class="comment">
+					<div class="conent">太棒了</div>
+				</div>
+				<div class="comment">
+					<div class="conent">保平安的概念！</div>
+				</div>
+				<div class="comment">
+					<div class="conent">施律師好帥</div>
+				</div>
+				<div class="comment">
+					<div class="conent">趕快上市呦</div>
+				</div>
+				<div class="comment">
+					<div class="conent">有沒有請梵蒂岡開光的基督徒版行車平安符？</div>
+				</div>
+				<div class="comment">
+					<div class="conent">加油</div>
+				</div>
+				<div class="comment">
+					<div class="conent">有創意，㊗️生意興隆</div>
+				</div>
+				<div class="comment">
+					<div class="conent">行車平安，神明保佑，律師隨行，安心上路，好讚</div>
+				</div>
+				<div class="comment">
+					<div class="conent">👍㊗️</div>
+				</div>
+				<div class="comment">
+					<div class="conent">便於吊掛固定於車上</div>
+				</div>
+				<div class="comment">
+					<div class="conent">謝謝</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很好，</div>
+				</div>
+				<div class="comment">
+					<div class="conent">如果有媽祖神像的圖象在平安符上可能會更有被保佑的感覺</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很棒</div>
+				</div>
+				<div class="comment">
+					<div class="conent">外觀很吸引人🤩</div>
+				</div>
+				<div class="comment">
+					<div class="conent">愛您 </div>
+				</div>
+				<div class="comment">
+					<div class="conent">讚讚讚</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很好</div>
+				</div>
+				<div class="comment">
+					<div class="conent">希望能夠讓駕駛人能得到良好的保障</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很有創意！</div>
+				</div>
+				<div class="comment">
+					<div class="conent">法律諮詢免費，有限次數嗎？</div>
+				</div>
+				<div class="comment">
+					<div class="conent">行車平安最好</div>
+				</div>
+				<div class="comment">
+					<div class="conent">能處理現場問續</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很創新可愛</div>
+				</div>
+				<div class="comment">
+					<div class="conent">駕車小心人人都平安</div>
+				</div>
+				<div class="comment">
+					<div class="conent">我覺得很酷🤩</div>
+				</div>
+				<div class="comment">
+					<div class="conent">吸睛。</div>
+				</div>
+				<div class="comment">
+					<div class="conent">若有更多款不同顏色吊飾會更有選擇性</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很棒的點子</div>
+				</div>
+				<div class="comment">
+					<div class="conent">可以出鑰匙圈,跟車鑰匙綁一起,隨身平安</div>
+				</div>
+			</div>
+		</div>
+		<div class="marquee-2">
+			<div class="d-flex">
+				<div class="comment">
+					<div class="conent">如果有含強制險折扣碼會更好</div>
+				</div>
+				<div class="comment">
+					<div class="conent">非常好的想法</div>
+				</div>
+				<div class="comment">
+					<div class="conent">行車平安符保平安，棒棒</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很漂亮</div>
+				</div>
+				<div class="comment">
+					<div class="conent">平安</div>
+				</div>
+				<div class="comment">
+					<div class="conent">多辦抽獎廣告行銷</div>
+				</div>
+				<div class="comment">
+					<div class="conent">神奇的聯名，酷</div>
+				</div>
+				<div class="comment">
+					<div class="conent">多辦抽獎活動</div>
+				</div>
+				<div class="comment">
+					<div class="conent">Good</div>
+				</div>
+				<div class="comment">
+					<div class="conent">非常吸引人的標題</div>
+				</div>
+				<div class="comment">
+					<div class="conent">讚</div>
+				</div>
+				<div class="comment">
+					<div class="conent">希望有提供袋子 送禮比較好看</div>
+				</div>
+				<div class="comment">
+					<div class="conent">創意不錯</div>
+				</div>
+				<div class="comment">
+					<div class="conent">難得有相關法律與宗教結合的相關產品 👍🏻</div>
+				</div>
+				<div class="comment">
+					<div class="conent">可以結合保險產業，第一時間給予完善的理賠教學</div>
+				</div>
+				<div class="comment">
+					<div class="conent">費用要有實際回饋之用圖</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很好啊，車禍時最需要有人關心</div>
+				</div>
+				<div class="comment">
+					<div class="conent">希望可以多多舉辦類似活動</div>
+				</div>
+				<div class="comment">
+					<div class="conent">滿別緻的</div>
+				</div>
+				<div class="comment">
+					<div class="conent">雙色流蘇配色很好看，如果將流蘇設計在圓圓的金屬下方飄逸感更佳</div>
+				</div>
+				<div class="comment">
+					<div class="conent">以人為本兼容載具才是王道</div>
+				</div>
+			</div>
+		</div>
+		<div class="marquee-3">
+			<div class="d-flex">
+				<div class="comment">
+					<div class="conent">很好的產品</div>
+				</div>
+				<div class="comment">
+					<div class="conent">讚</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很方便也有創意，造型長輩會喜歡＾＾</div>
+				</div>
+				<div class="comment">
+					<div class="conent">感恩👍分享</div>
+				</div>
+				<div class="comment">
+					<div class="conent">也太神了😎</div>
+				</div>
+				<div class="comment">
+					<div class="conent">質感很棒</div>
+				</div>
+				<div class="comment">
+					<div class="conent">真沒想到有出這聯名款，台灣好神</div>
+				</div>
+				<div class="comment">
+					<div class="conent">Good!</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很好的idea</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很好</div>
+				</div>
+				<div class="comment">
+					<div class="conent">真的有那麼理想嗎！</div>
+				</div>
+				<div class="comment">
+					<div class="conent">行車平安</div>
+				</div>
+				<div class="comment">
+					<div class="conent">線上諮詢方式方便</div>
+				</div>
+				<div class="comment">
+					<div class="conent">
+						"想提問：<br />
+						1.若是發生事故時，是否可視訊通話進行狀況釐清與排除？<br />
+						2.Qrcode是否容易磨損？"
 					</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="comment">
-						<div class="name">楊X生 / 台南</div>
-						<div class="conent">之前就是 PAMO 的會員，這次出的產品很實用，就買給家人用。</div>
-					</div>
+				<div class="comment">
+					<div class="conent">第一次聽到的，很特別。</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="comment">
-						<div class="name">許X名 / 台中</div>
-						<div class="conent">這種平安符結合法律服務的點子，第一次聽說，很有創意！</div>
-					</div>
+				<div class="comment">
+					<div class="conent">超有質感超美的</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="comment">
-						<div class="name">沈X玉 / 桃園</div>
-						<div class="conent">PAMO在事故發生時馬上透過電話幫我，讓我超安心的，不懂法律也不用擔心。</div>
-					</div>
+				<div class="comment">
+					<div class="conent">設計買家資料,於買入當下即建立檔案資料,當事故發生時提供必要的協助和諮詢</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="comment">
-						<div class="name">劉X茜 / 台南</div>
-						<div class="conent">平安符很精緻，配色喜氣，開箱時儀式感滿滿～</div>
-					</div>
+				<div class="comment">
+					<div class="conent">覺得雙色流蘇好像沒那麼好看，但或許實體不一樣</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="comment">
-						<div class="name">王X翔 / 台北</div>
-						<div class="conent">
-							比起一般的律師費用，PAMO的方案很平價，而且線上問到飽，推薦給有在開車的朋友。
-						</div>
-					</div>
+				<div class="comment">
+					<div class="conent">有實用的理賠比較重要</div>
+				</div>
+				<div class="comment">
+					<div class="conent">謝謝協助交通事故處理，非常有愛</div>
+				</div>
+				<div class="comment">
+					<div class="conent">很創新的想法，加油👏</div>
+				</div>
+				<div class="comment">
+					<div class="conent">好棒</div>
+				</div>
+				<div class="comment">
+					<div class="conent">加油</div>
+				</div>
+				<div class="comment">
+					<div class="conent">是一個很有趣的發想</div>
+				</div>
+				<div class="comment">
+					<div class="conent">感覺樣式可以再精簡一點，體積小一些</div>
+				</div>
+				<div class="comment">
+					<div class="conent">Qr 圖案可以不用這在牌上。可另外做一個小小牌吊在旁邊</div>
+				</div>
+				<div class="comment">
+					<div class="conent">Creative </div>
+				</div>
+				<div class="comment">
+					<div class="conent">律師好神線上服務應該要更低價，一般提供法律諮詢服務。但到了實際案件服務，可以再依案件難道收費，不然，這也不是保險，平時不會有人願意常態付費換取只是諮詢的服務！</div>
+				</div>
+				<div class="comment">
+					<div class="conent">加油</div>
+				</div>
+				<div class="comment">
+					<div class="conent">服務與品質跟價位都很重要</div>
+				</div>
+				<div class="comment">
+					<div class="conent">粗暴好用！</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="section text-center">
 		<div class="container">
-			<h1 class="mb-5">被多家外送企業信賴的夥伴</h1>
+			<h1 class="mb-5">多家外送企業信賴的夥伴</h1>
 			<div class="row">
 				<div class="col-lg-3 col-6">
 					<img src="assets/logo-mcd.png" />
@@ -252,6 +496,21 @@
 		<div class="container text-center">
 			<img src="assets/img_purchase_logo.png" />
 			<h1 class="mb-5">龍年首購！優惠滿滿!</h1>
+			<h3>律師好神行車平安符套組<br />包含以下內容</h3>
+			<div class="row">
+				<div class="col-4">
+					<img src="assets/img_package_1.png"></img>
+					<p>車禍線上律師<br />服務一年份</p>
+				</div>
+				<div class="col-4">
+					<img src="assets/img_package_2.png"></img>
+					<p>質感護身符<br />一枚</p>
+				</div>
+				<div class="col-4">
+					<img src="assets/img_package_3.png"></img>
+					<p>開通說明書<br />一份</p>
+				</div>
+			</div>
 			<div class="row mb-5">
 				<div class="col-lg-4 col-12">
 					<a href="#purchase-form" class="btn_plan" id="1888"><img src="assets/img_purchase_plan_1.png" /></a>
@@ -333,32 +592,6 @@
 					</div>
 				</form>
 			</div>
-			<h3>出貨與購買注意事項</h3>
-			<div class="row justify-content-center mb-5">
-				<div class="col-lg-8 text-start">
-					<ol class="text-start">
-						<li>拿到商品時，請先「不要」刮開序號貼膜，您於收到商品後，有7天可以向我們要求扣除匯款等相關手續費後，全額退款。但序號一經刮開，我們就不接受任何理由退款。</li>
-						<li>我們要請您儘速檢查平安符，平安符如果有協疵，您可以跟我們聯繫，我們會儘速為您更換新商品。</li>
-						<li>序號有開通期間限制，且在您要求我們提供法律服務時，我們設有兩個限制，第一為您需開通滿24小時；第二為您需要完成註冊，因為我們必須認識我們的客戶，避免利益衝突，才能為您提供合於品質的服務。</li>
-						<li>平安符沒有使用期限，但法律服務的效期是1年。PAMO法律服務的2024年的續約費用，為1,200元。</li>
-						<li>您可以自行登入PAMO會員介面，綁定信用卡，避免會期過期而影響您的PAMO點數。PAMO點數，詳見官網。</li>
-						<li>運輸過程的包裝破損，不在保固範圍內唷～</li>
-					</ol>
-				</div>
-			</div>
-			<h3>律師好神行車平安符套組<br />包含以下內容</h3>
-			<div class="row">
-				<div class="col-md-4">
-					<img src="assets/img_package_1.png"></img>
-				</div>
-				<div class="col-md-4">
-					<img src="assets/img_package_2.png"></img>
-				</div>
-				<div class="col-md-4">
-					<img src="assets/img_package_3.png"></img>
-				</div>
-			</div>
-
 		</div>
 	</div>
 	<div class="section" id="faq">
@@ -398,13 +631,30 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer bg-black py-5">
+	<div class="section">
+		<div class="container text-center">
+			<h3>出貨與購買注意事項</h3>
+			<div class="row justify-content-center mb-5">
+				<div class="col-lg-8 text-start">
+					<ol class="text-start">
+						<li>拿到商品時，請先「不要」刮開序號貼膜，您於收到商品後，有7天可以向我們要求扣除匯款等相關手續費後，全額退款。但序號一經刮開，我們就不接受任何理由退款。</li>
+						<li>我們要請您儘速檢查平安符，平安符如果有瑕疵，您可以跟我們聯繫，我們會儘速為您更換新商品。</li>
+						<li>序號有開通期間限制，且在您要求我們提供法律服務時，我們設有兩個限制，第一為您需開通滿24小時；第二為您需要完成註冊，因為我們必須認識我們的客戶，避免利益衝突，才能為您提供合於品質的服務。</li>
+						<li>平安符沒有使用期限，但法律服務的效期是1年。PAMO法律服務的2024年的續約費用，為1,200元。</li>
+						<li>您可以自行登入PAMO會員介面，綁定信用卡，避免會期過期而影響您的PAMO點數。PAMO點數，<a href="https://pamolaw.com" target="_blank">詳見官網</a>。</li>
+						<li>運輸過程的包裝破損，不在保固範圍內唷～</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer bg-black">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-auto mb-lg-0 mb-5">
+				<div class="col-auto mb-md-0 mb-5">
 					<img src="assets/img_footer.png"></img>
 				</div>
-				<div class="col text-lg-end text-white">
+				<div class="col-md text-lg-end text-white">
 					<a href="https://www.pamolaw.com/terms" target="_blank" class="nav-item">服務條款</a>
 					<div class="">
 						台北市中正區信義路二段23號5樓之四<br />
@@ -414,8 +664,33 @@
 			</div>
 		</div>
 	</div>
+	<!-- Messenger Chat Plugin Code -->
+	<div id="fb-root"></div>
+
+	<!-- Your Chat Plugin code -->
+	<div id="fb-customer-chat" class="fb-customerchat">
+	</div>
 
 	<script>
+		var chatbox = document.getElementById('fb-customer-chat');
+		chatbox.setAttribute("page_id", "233477367540555");
+		chatbox.setAttribute("attribution", "biz_inbox");
+
+		window.fbAsyncInit = function () {
+			FB.init({
+				xfbml: true,
+				version: 'v19.0'
+			});
+		};
+
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/zh_TW/sdk/xfbml.customerchat.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
 		$('#btn_menu').click(function () {
 			$('#mobile-menu').addClass('show');
 		})
@@ -428,9 +703,9 @@
 			//>=, not <=
 			if (scroll >= 500) {
 				//clearHeader, not clearheader - caps H
-				$(".nav-bar").removeClass("top");
+				$(".bottom-bar").addClass("show");
 			} else {
-				$(".nav-bar").addClass("top");
+				$(".bottom-bar").removeClass("show");
 			}
 		}); //missing );
 		$("#purchase-form").validate();
@@ -450,6 +725,27 @@
 			var selectedQuantity = $('#quantity_seletor').val();
 			var selectedValue = $('#plan_selector').val();
 			$('#purchased-sum').html(selectedValue * selectedQuantity)
+		});
+
+		$('.marquee-1').marquee({
+			duration: 10000,
+			duplicated: true,
+			// pauseOnHover: true,
+			startVisible: true,
+		});
+
+		$('.marquee-2').marquee({
+			duration: 13000,
+			duplicated: true,
+			// pauseOnHover: true,
+			startVisible: true,
+		});
+
+		$('.marquee-3').marquee({
+			duration: 7000,
+			duplicated: true,
+			// pauseOnHover: true,
+			startVisible: true,
 		});
 
 		$(document).ready(function () {
@@ -594,7 +890,7 @@
 				swal("請輸入正確的手機號碼!", "error phone format", "error", { button: "Cancel" });
 				return
 			}
-		
+
 			// Check TPDirect.card.getTappayFieldsStatus().canGetPrime before TPDirect.card.getPrime
 			if (tappayStatus.canGetPrime === false) {
 				swal("卡號授權取得異常", "can not get prime", "error", { button: "Cancel" });

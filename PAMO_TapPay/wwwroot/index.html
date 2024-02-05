@@ -535,76 +535,76 @@
                     <a href="#purchase-form" class="btn_plan" id="8888"><img src="assets/img_purchase_plan_3.png"/></a>
                 </div>
             </div>
-            <div class="row justify-content-center mb-5">
-                <form class="col-lg-8 p-5 purchase-form" id="purchase-form">
-                    <div class="row text-start justify-content-center">
-                        <div class="col-lg-6">
-                            <div class="mb-4">
-                                <div>姓名</div>
-                                <input class="w-100" type="text" required>
-                            </div>
-                            <div class="mb-4">
-                                <div>手機</div>
-                                <input class="w-100" type="number" required>
-                            </div>
-                            <div class="mb-4">
-                                <div>配送地址</div>
-                                <input class="w-100" type="text" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-4">
-                                <div>信用卡卡號</div>
-                                <input class="w-100" type="text" required>
-                            </div>
-                            <div class="mb-4">
-                                <div>信用卡有效年限</div>
-                                <input class="w-100" type="text" required>
-                            </div>
-                            <div class="mb-4">
-                                <div>信用卡驗證碼</div>
-                                <input class="w-100" type="creditcard" required>
-                            </div>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row text-start justify-content-center">
-                        <div class="col-lg-6 mb-3">
-                            <div>購入方案</div>
-                            <select id="plan_selector" class="w-100">
-                                <option value="1888">律師好神一入組</option>
-                                <option value="3699">律師好神二入組</option>
-                                <option value="8888">律師好神五入組</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <div>購入組數</div>
-                            <select id="quantity_seletor" class="w-100">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row text-start align-items-end justify-content-center">
-                        <div class="col-lg-6">
-                            <p class="m-0">總金額</p>
-                            <h2>NT$<span id="purchased-sum">1888</span></h2>
-                        </div>
-                        <div class="col-lg-6 text-end">
-                            <input class="button w-100" type="submit" value="確認並付款">
-                        </div>
-                    </div>
-                </form>
-            </div>
+            			<div class="row justify-content-center mb-5">
+				<form class="col-lg-8 p-5 purchase-form" id="purchase-form">
+					<div class="row text-start justify-content-center">
+						<div class="col-lg-6">
+							<div class="mb-4">
+								<label for="PersonName">姓名</label>
+								<input class="form-control w-100" type="text" id="PersonName" required>
+							</div>
+							<div class="mb-4">
+								<label for="PhoneNumber">手機</label>
+								<input class="form-control w-100" type="tel" id="PhoneNumber" required>
+							</div>
+							<div class="mb-4">
+								<label for="Address">配送地址</label>
+								<input class="form-control w-100" type="text" id="Address" required>
+							</div>
+						</div>
+						<div class="col-lg-6 card-number-group">
+							<div class="mb-4">
+								<label>信用卡卡號</label>
+								<div class="form-control w-100 card-number"></div>
+							</div>
+							<div class="mb-4 expiration-date-group">
+								<label>信用卡有效年限</label>
+								<div class="form-control w-100 expiration-date" id="tappay-expiration-date"></div>
+							</div>
+							<div class="mb-4 cvc-group">
+								<label>信用卡驗證碼</label>
+								<div class="form-control w-100 cvc" type="creditcard"></div>
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="row text-start justify-content-center">
+						<div class="col-lg-6 mb-3">
+							<div>購入方案</div>
+							<select id="plan_selector" class="form-control w-100">
+								<option value="1888">律師好神一入組</option>
+								<option value="3699">律師好神二入組</option>
+								<option value="8888">律師好神五入組</option>
+							</select>
+						</div>
+						<div class="col-lg-6 mb-3">
+							<div>購入組數</div>
+							<select id="quantity_seletor" class="form-control w-100">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+							</select>
+						</div>
+					</div>
+					<hr />
+					<div class="row text-start align-items-end justify-content-center">
+						<div class="col-lg-6">
+							<p class="m-0">總金額</p>
+							<h2>NT$<span id="purchased-sum">1888</span></h2>
+						</div>
+						<div class="col-lg-6 text-end">
+							<input class="button w-100" type="submit" value="確認並付款">
+						</div>
+					</div>
+				</form>
+			</div>
         </div>
     </div>
     <div class="section" id="faq">
