@@ -3,7 +3,6 @@
 <head>
 	@Html.AntiForgeryToken()
 	<title>PAMO - @ViewData["Title"]</title>
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="shortcut icon" HREF="favicon.ico">
 	<link href="js/jquery.fancybox.min.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
@@ -20,8 +19,6 @@
 	<meta property="og:image" content="assets/cover.png" />
 	<meta property="og:description" content="鎮瀾宮跨界聯名車禍線上律師！首款有法力的行車平安符！" />
 	<meta charset="UTF-8">
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://js.tappaysdk.com/tpdirect/v5.8.0"></script>
@@ -31,6 +28,28 @@
 	<script src="js/jquery.validate.min.js"></script>
 	<script src="js/jquery.fancybox.min.js"></script>
 	<script src="js/jqeury.marquee.min.js"></script>
+	<!-- Meta Pixel Code -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+				n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '310145852073598');
+		fbq('track', 'PageView');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none"
+			 src="https://www.facebook.com/tr?id=310145852073598&ev=PageView&noscript=1" />
+	</noscript>
+	<!-- End Meta Pixel Code -->
+	<!-- Hotjar Tracking Code for 律師好神 -->
 	<script>
 		(function (h, o, t, j, a, r) {
 			h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
@@ -40,6 +59,26 @@
 			r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
 			a.appendChild(r);
 		})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+	</script>
+	<!-- Google Tag Manager -->
+	<script>
+		(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-KVK5QXGJ');</script>
+	<!-- End Google Tag Manager -->
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-W90PCHWCP7"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-W90PCHWCP7');
 	</script>
 </head>
 <body>
