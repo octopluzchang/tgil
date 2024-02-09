@@ -307,10 +307,14 @@
                                 <input class="form-control w-100" type="tel" id="PhoneNumber" required>
                             </div>
                             <div class="mb-4">
-                                <label for="Address">配送地址</label>
-                                <input class="form-control w-100" type="text" id="Address" required>
-                            </div>
-                        </div>
+								<label for="Address">配送地址</label>
+								<input class="form-control w-100" type="text" id="Address" required>
+							</div>
+							<div class="mb-4">
+								<label for="PersonEmail">Email</label>
+								<input class="form-control w-100" type="text" id="PersonEmail" required>
+							</div>
+						</div>
                         <div class="col-lg-6 card-number-group">
                             <div class="mb-4">
                                 <label>信用卡卡號</label>
@@ -626,10 +630,10 @@
 		})
 
 		$('form').on('submit', function (event) {
-
-			var phoneNumber = $('#PhoneNumber').val();
+            var personName = $('#PersonName').val();
+            var phoneNumber = $('#PhoneNumber').val();
+            var personEmail = $('#PersonEmail').val();
 			var address = $('#Address').val();
-			var personName = $('#PersonName').val();
 			var groups = $('#quantity_seletor').val();
 			var plan = $('#plan_selector').val();
 			var price = $('#purchased-sum').text();
@@ -674,6 +678,7 @@
 				var postData = {
 					"Prime": result.card.prime,
 					"PersonName": personName,
+                    "PersonEmail": personEmail,
 					"Groups": groups,
 					"Plan": plan,
 					"Price": price,

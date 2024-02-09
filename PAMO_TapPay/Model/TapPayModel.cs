@@ -5,8 +5,11 @@ namespace PAMO_TapPay
     public class TravelProReceiveModel
     {
         public string PersonName { get; set; }
-        public string Address { get; set; }
+        public string PersonEmail { get; set; }
+
         public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+
         public string Prime { get; set; }
         public int Groups { get; set; }
 		public int Plan { get; set; }

@@ -79,7 +79,7 @@ namespace PAMO_TapPay.Pages
                     {
                         phone_number = receiveModel.PhoneNumber,
                         name = receiveModel.PersonName,
-                        email = "",
+                        email = receiveModel.PersonEmail,
                         zip_code = "",
                         address = receiveModel.Address,
                         national_id = ""
