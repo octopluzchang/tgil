@@ -174,7 +174,6 @@ a.nav-item {
     background-color: black;
     background-image: url(../assets/bg_s2.png);
     background-position: bottom center;
-    background-size: 1200px;
     background-repeat: no-repeat;
     padding-bottom: 20em;
 }
@@ -184,6 +183,13 @@ a.nav-item {
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto 100%;
+}
+
+#gift {
+    background-image: url(../assets/bg_gift.png);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    padding-bottom: 20em;
 }
 
 .purchase-form {
@@ -220,6 +226,12 @@ a.nav-item {
     position: relative;
 }
 
+.form-control {
+    float: left;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
 .footer {
     padding: 50px 0;
 }
@@ -229,11 +241,15 @@ a.nav-item {
         min-height: 80vh;
         background-size: 100%;
     }
-    #s7 {
-        background-size: auto 100%;
+    #s7, #s2-how, #gift {
+        background-size: 100%;
     }
   }
-
+  @media only screen and (max-width: 1618px) {
+    #s7, #s2-how, #gift {
+        background-size: 100%;
+    }
+  }
   @media only screen and (max-width: 1200px) {
     #s1 {
         min-height: 80vh;
@@ -242,6 +258,9 @@ a.nav-item {
     }
     #s7 {
         background-size: auto 100%;
+    }
+    #s2-how, #gift {
+        background-size: 1200px
     }
   }
 
